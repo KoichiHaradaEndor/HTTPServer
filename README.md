@@ -30,6 +30,6 @@ Please refer to "LICENSE" file.
 
 ## Release Note
 
-Rewritten using 4D v18R3 using Class function (2020-05-06)
-Added new Router (2020-04-26)
-Moved HttpServer.vhost to new Virtualhost (2020-04-23)
+Rewritten using 4D v18R3 using Class function (2020-05-06)  
+Added new Router (2020-04-26)  
+Moved HttpServer.vhost to new Virtualhost (2020-04-23)  
