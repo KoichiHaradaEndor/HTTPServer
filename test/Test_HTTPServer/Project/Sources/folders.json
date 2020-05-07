@@ -1,0 +1,150 @@
+﻿{
+	"Test": {
+		"groups": [
+			"Test1",
+			"Test2",
+			"Test3",
+			"Test4",
+			"Test5",
+			"Test6"
+		]
+	},
+	"Test1": {
+		"groups": [
+			"Test1-1",
+			"Test1-2",
+			"Test1-3"
+		]
+	},
+	"Test1-1": {
+		"methods": [
+			"Test1_1",
+			"Test1_1_1",
+			"Test1_1_2",
+			"Test1_1_3"
+		]
+	},
+	"Test1-2": {
+		"methods": [
+			"Test1_2",
+			"Test1_2_1",
+			"Test1_2_2_GET",
+			"Test1_2_2_POST",
+			"Test1_2_3"
+		]
+	},
+	"Test1-3": {
+		"methods": [
+			"Test1_3",
+			"Test1_3_1",
+			"Test1_3_2"
+		]
+	},
+	"Test2": {
+		"groups": [
+			"Test2-1",
+			"Test2-2",
+			"Test2-3",
+			"Test2-4",
+			"Test2-5"
+		]
+	},
+	"Test2-1": {
+		"methods": [
+			"Test2_1",
+			"Test2_1_1"
+		]
+	},
+	"Test2-2": {
+		"methods": [
+			"Test2_2",
+			"Test2_2_1"
+		]
+	},
+	"Test2-3": {
+		"methods": [
+			"Test2_3",
+			"Test2_3_1"
+		]
+	},
+	"Test2-4": {
+		"methods": [
+			"Test2_4",
+			"Test2_4_1"
+		]
+	},
+	"Test2-5": {
+		"methods": [
+			"Test2_5",
+			"Test2_5_1",
+			"Test2_5_1_Default",
+			"Test2_5_1_Json",
+			"Test2_5_1_Plain"
+		]
+	},
+	"Test3": {
+		"groups": [
+			"Test3-1"
+		]
+	},
+	"Test3-1": {
+		"methods": [
+			"Test3_1",
+			"Test3_1_1_main",
+			"Test3_1_1_vhost"
+		]
+	},
+	"Test4": {
+		"groups": [
+			"Test4-1",
+			"Test4-2",
+			"Test4-3"
+		]
+	},
+	"Test4-1": {
+		"methods": [
+			"Test4_1",
+			"Test4_1_1"
+		]
+	},
+	"Test4-2": {
+		"methods": [
+			"Test4_2",
+			"Test4_2_1"
+		]
+	},
+	"Test4-3": {
+		"methods": [
+			"Test4_3",
+			"Test4_3_1"
+		]
+	},
+	"Test5": {
+		"groups": [
+			"Test5-1"
+		]
+	},
+	"Test5-1": {
+		"methods": [
+			"Test5_1",
+			"Test5_1_1",
+			"Test5_1_2",
+			"Test5_1_3",
+			"Test5_1_4"
+		]
+	},
+	"Test6": {
+		"groups": [
+			"Test6-1"
+		]
+	},
+	"Test6-1": {
+		"methods": [
+			"Test6_1",
+			"Test6_1_Func1",
+			"Test6_1_Func2",
+			"Test6_1_Func2New"
+		]
+	},
+	"trash": {}
+}

@@ -1,0 +1,78 @@
+﻿{
+	"Classes": {
+		"classes": [
+			"HttpServer",
+			"Request",
+			"Response",
+			"Route",
+			"Router",
+			"SingleRoute",
+			"VirtualHost"
+		]
+	},
+	"DatabaseMethod": {
+		"methods": [
+			"OnWebConnection"
+		]
+	},
+	"Docs": {
+		"methods": [
+			"About Request Object",
+			"About Response Object",
+			"About Storage structure"
+		]
+	},
+	"Error": {
+		"methods": [
+			"error_catch",
+			"error_get",
+			"error_handler",
+			"error_throw",
+			"error_try"
+		]
+	},
+	"HttpServer": {
+		"methods": [
+			"HS_callNextCallback",
+			"HS_findVhost",
+			"HS_initStorageCommon",
+			"HS_initStorageWebServer"
+		]
+	},
+	"Public": {
+		"methods": [
+			"import HttpServer"
+		]
+	},
+	"Request": {
+		"methods": [
+			"RQ_findAccept",
+			"RQ_parseWebVariables",
+			"RQ_sortAccept"
+		]
+	},
+	"Response": {
+		"methods": [
+			"RS_getStatusText",
+			"RS_remove",
+			"RS_setHeaders"
+		]
+	},
+	"Route Definition": {
+		"methods": [
+			"HS_addRoute",
+			"HS_addRouteFunction",
+			"HS_addRouteRouter",
+			"HS_addRouteVhost"
+		]
+	},
+	"Utility": {
+		"methods": [
+			"charSetNameToMIBEnum",
+			"compareCaseSensitive",
+			"decodeURIComponent",
+			"encodeURIComponent"
+		]
+	},
+	"trash": {}
+}
