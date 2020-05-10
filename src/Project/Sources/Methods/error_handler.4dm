@@ -7,8 +7,10 @@
 */
 
 C_LONGINT:C283(error)
+C_COLLECTION:C1488(error_c)
 
 C_LONGINT:C283($index_l)
+C_COLLECTION:C1488($error_c)
 
 ARRAY LONGINT:C221($errorCodes_al;0)
 ARRAY TEXT:C222($components_at;0)
@@ -20,13 +22,17 @@ $components_at;\
 $messages_at\
 )
 
-$index_l:=Find in array:C230($errorCodes_al;error)
-If ($index_l>0)
+$error_c:=New collection:C1472()
+ARRAY TO COLLECTION:C1563($error_c;\
+$errorCodes_al;"errorNumber";\
+$components_at;"component";\
+$messages_at;"messaage"\
+)
+
+If (error_c=Null:C1517)
 	
-	error_throw ($messages_at{$index_l})
-	
-Else 
-	
-	error_throw ("Error code: "+String:C10(error))
+	error_c:=New collection:C1472()
 	
 End if 
+
+error_c:=error_c.concat($error_c)
