@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>HTTPServer 4D Component</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -528,6 +529,100 @@ $app_o.use("/v2";$router_o)</code></pre>Create Router object then add routes as 
 
         </div><!--//<div id="chapter7">-->
 
+        <div id="chapter8">
+
+            <h2>Component HTTP Server</h2>
+    
+            <p>Starting from 4D v18R3, you can configure a 4D component as an HTTP server, addition to the HTTP server of the host database.</p>
+
+            <p>HTTPServer component also supports component's HTTP server. This way, the component take care of the data and the behaviour, and then the host can decide the routes.</p>
+    
+            <div id="test7-1">
+    
+                <h3>Test7-1: Defining component HTTP server</h3>
+    
+                <p>To configure your component as HTTP server using this component, you will need to do the following:</p>
+                <ul>
+                    <li>Call OnWebConnection method in the component's On Web Connection method</li>
+                    <li>Share methods that responds to web requests</li>
+                    <li>Initialize component's HTTP server using 4D's &quot;Web Server&quot; command</li>
+                </ul>
+                <p>Following is an example to accompolish the above (2nd and 3rd) task:
+                    <pre><code>// PostalCode component method
+C_OBJECT($0;$this_o)
+$this_o:=New object()
+$this_o.webServer:=Formula(webServer )
+$this_o.webQueryByCode:=Formula(webQueryByCode )
+$this_o.webQueryByCode:=Formula(queryByAddress )</code></pre>This component method is shared with the host. Each member function look like:<pre><code>// webServer method
+C_OBJECT($0)
+$0:=WEB Server</code></pre>It just return Web Server object. By calling this method, Web Server command is executed in the component's context. As the result, component's web server is initialized and the host receives the component's web server object.<pre><code>// webQueryByCode method
+C_OBJECT($1;$req_o)
+C_OBJECT($2;$res_o)
+C_OBJECT($3;$next_o)
+
+C_TEXT($code_t)
+C_COLLECTION($result_c)
+
+$req_o:=$1
+$res_o:=$2
+$next_o:=$3
+
+$result_c:=New collection()
+$code_t:=$req_o.query["code"]
+$result_c:=queryByCode ($code_t) // Do some query with the code parameter
+$res_o.set("Access-Control-Allow-Origin";"*").json($result_c) // Then make response
+</code></pre>This method handles web request. Note that this code just defines behaviour. The route will be defined in the host application.</p>
+
+                <p>queryByAddress method is also exported. This method takes address parameter and returns collection of addresses that contains postal codes, but not ready for web. In this case, you can write a method that uses this shared method in the host, and add codes for the web, like bellow:<pre><code>// Test7_1_Address method
+C_OBJECT($1;$req_o)
+C_OBJECT($2;$res_o)
+C_OBJECT($3;$next_o)
+
+C_OBJECT($postalCode_o)
+C_TEXT($address_t)
+C_COLLECTION($result_c)
+
+$req_o:=$1
+$res_o:=$2
+$next_o:=$3
+
+$result_c:=New collection()
+$address_t:=$req_o.query["address"]
+$postalCode_o:=PostalCode   //  Get PostalCode object
+$result_c:=$postalCode_o.queryByAddress($address_t)
+$res_o.set("Access-Control-Allow-Origin";"*").json($result_c)</code></pre>Then also share this method with the component to allow this method is executed in the component's context.</p>
+
+                <p>In the host application, route definition look like:<pre><code>C_OBJECT($cs_o;$app_o;$postalCode_o)
+
+$postalCode_o:=PostalCode   //  Get PostalCode object
+$webServer_o:=$postalCode_o.webServer()  // PostalCode web server object
+
+$options_o:=New object("HTTPPort";8080;"HTTPSPort";8443)
+
+$cs_o:=import HttpServer
+$app_o:=$cs_o.HttpServer.new($webServer_o;$options_o)
+
+$app_o.get("/test7-1-code";$postalCode_o.webQueryByCode)
+$app_o.get("/test7-1-address";Formula(Test7_1_Address ))
+$app_o.start()</code></pre>This method does:
+                    <ol>
+                        <li>Receives an object published by the component.</li>
+                        <li>Initialize component's web server and receives the web server object.</li>
+                        <li>Defines web server options (port numbers other than the standard ones).</li>
+                        <li>Import HttpServer class.</li>
+                        <li>Instantiate HttpServer object with the component's web server object.</li>
+                        <li>Defines routes.</li>
+                        <li>Then starts web server of the component</li>
+                    </ol>
+                </p>
+                    
+                <div><button v-on:click="test7_1_Code" class="longTitle">Try Code</button><button v-on:click="test7_1_Address" class="longTitle">Try Address</button></div>
+                <div><textarea id="test7-1-result" readonly>{{ message_7_1 }}</textarea></div>
+    
+            </div><!--//<div id="test7-1">-->
+
+        </div><!--//<div id="chapter8">-->
+    
     </div><!--//div class="main"-->
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>

@@ -1,4 +1,10 @@
 ﻿{
+	"(Test7-2)": {
+		"methods": [
+			"(Test7_2_Code)",
+			"(Test7_2)"
+		]
+	},
 	"Test": {
 		"groups": [
 			"Test1",
@@ -6,7 +12,8 @@
 			"Test3",
 			"Test4",
 			"Test5",
-			"Test6"
+			"Test6",
+			"Test7"
 		]
 	},
 	"Test1": {
@@ -146,5 +153,20 @@
 			"Test6_1_Func2New"
 		]
 	},
-	"trash": {}
+	"Test7": {
+		"groups": [
+			"Test7-1"
+		]
+	},
+	"Test7-1": {
+		"methods": [
+			"Test7_1",
+			"Test7_1_Address"
+		]
+	},
+	"trash": {
+		"groups": [
+			"(Test7-2)"
+		]
+	}
 }

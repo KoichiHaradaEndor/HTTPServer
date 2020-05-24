@@ -406,4 +406,29 @@ let test = {
         }
     });
 
+    const test7_1 = new Vue({
+        el: "#test7-1",
+        data: {
+            message_7_1: 'Test result will be displayed here'
+        },
+        methods: {
+            test7_1_Code: function() {
+                var path = '/test7-1-code?code=1020082';
+                test.makeReq("GET", "http://localhost:8080" + path).then((res) => {
+                    this.message_7_1 = 'Path : ' + path + '\nresponse : ' + res.responseText;
+                }).catch(e => {
+                    console.error(e);
+                })
+            },
+            test7_1_Address: function() {
+                var path = '/test7-1-address?address=' + encodeURIComponent('東京都千代田区永田町');
+                test.makeReq("GET", "http://localhost:8080" + path).then((res) => {
+                    this.message_7_1 = 'Path : ' + path + '\nresponse : ' + res.responseText;
+                }).catch(e => {
+                    console.error(e);
+                })
+            }
+        }
+    });
+
 })();
