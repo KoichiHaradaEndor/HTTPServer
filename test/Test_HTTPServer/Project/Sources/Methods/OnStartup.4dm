@@ -7,7 +7,7 @@ If (Count parameters:C259=0)
 	
 Else 
 	
-	C_OBJECT:C1216($cs_o;$app_o;$options_o)
+	C_OBJECT:C1216($cs_o;$app_o;$options_o;$postalCode_o;$webServer_o)
 	
 	$options_o:=New object:C1471("dynamicFolder";Folder:C1567(fk database folder:K87:14).folder("WebFolderDynamic"))
 	$cs_o:=import HttpServer 
@@ -26,10 +26,20 @@ Else
 	Test4_2 ($app_o)
 	Test4_3 ($app_o)
 	Test6_1 ($app_o)
-	Test5_1 ($app_o)  // Auth Test must be bottom
+	Test5_1 ($app_o)  // Auth Test must be at the bottom
 	
 	  // load http server configuration and
 	  // start web server
+	$app_o.start()
+	
+	
+	  // Defines component web server
+	$postalCode_o:=PostalCode   //  Get PostalCode object
+	$webServer_o:=$postalCode_o.webServer()  // PostalCode web server object
+	$options_o:=New object:C1471("HTTPPort";8080;"HTTPSPort";8443)
+	$app_o:=$cs_o.HttpServer.new($webServer_o;$options_o)
+	
+	Test7_1 ($app_o)
 	$app_o.start()
 	
 End if 
