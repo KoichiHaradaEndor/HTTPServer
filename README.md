@@ -30,6 +30,7 @@ Please refer to "LICENSE" file.
 
 ## Release Note
 
+Added component HTTP server support (2020-05-24)
 Modified compareCaseSensitive command (2020-05-09)  
 Rewritten using 4D v18R3 using Class function (2020-05-06)  
 Added new Router (2020-04-26)  
