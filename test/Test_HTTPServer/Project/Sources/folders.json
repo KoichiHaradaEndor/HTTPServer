@@ -161,7 +161,8 @@
 	"Test7-1": {
 		"methods": [
 			"Test7_1",
-			"Test7_1_Address"
+			"Test7_1_Address",
+			"Test7_1_ReadCsv"
 		]
 	},
 	"trash": {
