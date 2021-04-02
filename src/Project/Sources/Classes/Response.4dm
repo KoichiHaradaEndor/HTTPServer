@@ -249,104 +249,105 @@ Function cookie
 			
 	End case 
 	
-	If ($numParam_l<3)
-		
-		// options parameter omitted
-		// use default encoding
-		$cookie_t:=$cookie_t+encodeURIComponent($cookieValue_t)
-		
-	Else 
+	If ($numParam_l>=3)
 		
 		$options_o:=$3
 		
+	Else 
 		
-		If ($options_o.encode#Null:C1517)
-			
-			// use specified encoding
-			$cookieValue_t:=$options_o.encode.call($cookieValue_t)
-			
-		Else 
-			
-			// use default encoding
-			$cookieValue_t:=encodeURIComponent($cookieValue_t)
-			
-		End if 
-		
-		$cookie_t:=$cookie_t+$cookieValue_t
-		
-		// Expires=<date>
-		If ($options_o.expires#Null:C1517) & ($options_o.maxAge=Null:C1517)
-			
-			$cookie_t:=$cookie_t+"; Expires="+String:C10($options_o.expires.date; Date RFC 1123:K1:11; Time:C179($options_o.expires.time))
-			
-		End if 
-		
-		// Max-Age=<number>
-		If ($options_o.maxAge#Null:C1517)
-			
-			$cookie_t:=$cookie_t+"; Max-Age="+String:C10($options_o.maxAge)
-			
-		End if 
-		
-		// Domain=<domain-value>
-		If ($options_o.domain#Null:C1517)
-			
-			$cookie_t:=$cookie_t+"; Domain="+String:C10($options_o.domain)
-			
-		End if 
-		
-		// Path=<path-value>
-		If ($options_o.path#Null:C1517)
-			
-			$cookie_t:=$cookie_t+"; Path="+$options_o.path
-			
-		Else 
-			
-			$cookie_t:=$cookie_t+"; Path=/"
-			
-		End if 
-		
-		// Secure
-		Case of 
-			: ($options_o.secure=Null:C1517)
-			: ($options_o.secure=False:C215)
-			Else 
-				
-				$cookie_t:=$cookie_t+"; Secure"
-				
-		End case 
-		
-		// HttpOnly
-		Case of 
-			: ($options_o.httpOnly#Null:C1517)
-				
-				$cookie_t:=$cookie_t+"; HttpOnly"
-				
-			: ($options_o.httpOnly)
-				
-				$cookie_t:=$cookie_t+"; HttpOnly"
-				
-		End case 
-		
-		// SameSite=<samesite-value>
-		Case of 
-			: ($options_o.sameSite=Null:C1517)
-				
-			: ($options_o.sameSite="Strict")
-				
-				$cookie_t:=$cookie_t+"; SameSite="+$options_o.sameSite
-				
-			: ($options_o.sameSite="Lax")
-				
-				$cookie_t:=$cookie_t+"; SameSite="+$options_o.sameSite
-				
-			: ($options_o.sameSite="None")
-				
-				$cookie_t:=$cookie_t+"; SameSite="+$options_o.sameSite
-				
-		End case 
+		// Set option default values
+		$options_o:=New object:C1471(\
+			"httpOnly"; True:C214; \
+			"path"; "/"\
+			)
 		
 	End if 
+	
+	If ($options_o.encode#Null:C1517)
+		
+		// use specified encoding
+		$cookieValue_t:=$options_o.encode($cookieValue_t)
+		
+	Else 
+		
+		// use default encoding
+		$cookieValue_t:=encodeURIComponent($cookieValue_t)
+		
+	End if 
+	
+	$cookie_t:=$cookie_t+$cookieValue_t
+	
+	// Expires=<date>
+	If ($options_o.expires#Null:C1517) & ($options_o.maxAge=Null:C1517)
+		
+		$cookie_t:=$cookie_t+"; Expires="+String:C10($options_o.expires.date; Date RFC 1123:K1:11; Time:C179($options_o.expires.time))
+		
+	End if 
+	
+	// Max-Age=<number>
+	If ($options_o.maxAge#Null:C1517)
+		
+		$cookie_t:=$cookie_t+"; Max-Age="+String:C10($options_o.maxAge)
+		
+	End if 
+	
+	// Domain=<domain-value>
+	If ($options_o.domain#Null:C1517)
+		
+		$cookie_t:=$cookie_t+"; Domain="+String:C10($options_o.domain)
+		
+	End if 
+	
+	// Path=<path-value>
+	If ($options_o.path#Null:C1517)
+		
+		$cookie_t:=$cookie_t+"; Path="+$options_o.path
+		
+	Else 
+		
+		$cookie_t:=$cookie_t+"; Path=/"
+		
+	End if 
+	
+	// Secure
+	Case of 
+		: ($options_o.secure=Null:C1517)
+		: ($options_o.secure=False:C215)
+		Else 
+			
+			$cookie_t:=$cookie_t+"; Secure"
+			
+	End case 
+	
+	// HttpOnly
+	Case of 
+		: ($options_o.httpOnly=Null:C1517)
+			
+			$cookie_t:=$cookie_t+"; HttpOnly"
+			
+		: ($options_o.httpOnly)
+			
+			$cookie_t:=$cookie_t+"; HttpOnly"
+			
+	End case 
+	
+	// SameSite=<samesite-value>
+	Case of 
+		: ($options_o.sameSite=Null:C1517)
+			
+		: ($options_o.sameSite="Strict")
+			
+			$cookie_t:=$cookie_t+"; SameSite="+$options_o.sameSite
+			
+		: ($options_o.sameSite="Lax")
+			
+			$cookie_t:=$cookie_t+"; SameSite="+$options_o.sameSite
+			
+		: ($options_o.sameSite="None")
+			
+			$cookie_t:=$cookie_t+"; SameSite="+$options_o.sameSite
+			
+	End case 
 	
 	$0:=This:C1470.append("Set-Cookie"; $cookie_t)
 	

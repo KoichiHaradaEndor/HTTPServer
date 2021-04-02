@@ -30,6 +30,7 @@ Please refer to "LICENSE" file.
 
 ## Release Note
 
+Fixed bug : Response.cookie, httpOnly was not default, path param was not root when option is omitted  (2021-04-02)  
 Fixed bug : Response.redirect did not work (2021-04-02)  
 Added component HTTP server support (2020-05-24)  
 Modified compareCaseSensitive command (2020-05-09)  
