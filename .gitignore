@@ -7,7 +7,6 @@
 /Project/BuildSettings/*
 /Settings/*
 /userPreferences*/*
-/Builds/*
 /Wiki/*
 
 # Don't need the data file, indexes, symbols, or journal
