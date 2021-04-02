@@ -15,15 +15,15 @@ Class constructor
 * @param {Object} $1 Request object
 */
 	
-	C_OBJECT:C1216($1;$webServer_o)
-	C_OBJECT:C1216($2;$request_o)
+	C_OBJECT:C1216($1; $webServer_o)
+	C_OBJECT:C1216($2; $request_o)
 	
 	$webServer_o:=$1
 	$request_o:=$2
 	
-	  //#####
-	  // Properties
-	  //#####
+	//#####
+	// Properties
+	//#####
 	This:C1470.locals:=New object:C1471()
 	This:C1470.__headers__:=New collection:C1472()
 	This:C1470.__request__:=$request_o
@@ -50,12 +50,12 @@ Function append
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$fieldName_t)
+	C_TEXT:C284($1; $fieldName_t)
 	C_VARIANT:C1683($2)
 	C_OBJECT:C1216($0)
 	
 	C_LONGINT:C283($type_l)
-	C_TEXT:C284($flag_t;$currentValue_t)
+	C_TEXT:C284($flag_t; $currentValue_t)
 	C_COLLECTION:C1488($queryResult_c)
 	
 	$fieldName_t:=$1
@@ -64,21 +64,21 @@ Function append
 	
 	If ($fieldName_t="Set-Cookie")
 		
-		  // In case of set-cookie, always create another entry.
+		// In case of set-cookie, always create another entry.
 		$flag_t:="create"
 		
 	Else 
 		
-		  // In case of not set-cookie, check if its already present
-		$queryResult_c:=This:C1470.__headers__.query("name = :1";$fieldName_t)
+		// In case of not set-cookie, check if its already present
+		$queryResult_c:=This:C1470.__headers__.query("name = :1"; $fieldName_t)
 		If ($queryResult_c.length=0)
 			
-			  // If the field is not present, create one
+			// If the field is not present, create one
 			$flag_t:="create"
 			
 		Else 
 			
-			  // If the field is present, append the data with comma
+			// If the field is present, append the data with comma
 			$flag_t:="append"
 			
 		End if 
@@ -91,17 +91,17 @@ Function append
 			Case of 
 				: ($type_l=Is text:K8:3)
 					
-					This:C1470.__headers__.push(New object:C1471("name";$fieldName_t;"value";$2))
+					This:C1470.__headers__.push(New object:C1471("name"; $fieldName_t; "value"; $2))
 					
 				: ($type_l=Is collection:K8:32)
 					
-					This:C1470.__headers__.push(New object:C1471("name";$fieldName_t;"value";$2.join(", ")))
+					This:C1470.__headers__.push(New object:C1471("name"; $fieldName_t; "value"; $2.join(", ")))
 					
 			End case 
 			
 		: ($flag_t="append")
 			
-			  // Each $queryResult_c item is the same reference as the one of This.__headers__
+			// Each $queryResult_c item is the same reference as the one of This.__headers__
 			Case of 
 				: ($type_l=Is text:K8:3)
 					
@@ -138,7 +138,7 @@ Function attachment
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$filename_t)
+	C_TEXT:C284($1; $filename_t)
 	C_OBJECT:C1216($0)
 	
 	C_TEXT:C284($headerValue_t)
@@ -156,7 +156,7 @@ Function attachment
 		
 	End if 
 	
-	This:C1470.set("Content-Disposition";$headerValue_t)
+	This:C1470.set("Content-Disposition"; $headerValue_t)
 	
 	$0:=This:C1470
 	
@@ -224,19 +224,19 @@ Function cookie
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$cookieName_t)
+	C_TEXT:C284($1; $cookieName_t)
 	C_VARIANT:C1683($2)
-	C_OBJECT:C1216($3;$options_o)
+	C_OBJECT:C1216($3; $options_o)
 	C_OBJECT:C1216($0)
 	
-	C_LONGINT:C283($numParam_l;$type_l)
-	C_TEXT:C284($cookie_t;$cookieValue_t)
+	C_LONGINT:C283($numParam_l; $type_l)
+	C_TEXT:C284($cookie_t; $cookieValue_t)
 	
 	$numParam_l:=Count parameters:C259
 	
 	$cookieName_t:=$1
 	
-	  // <cookie-name>=<cookie-value>
+	// <cookie-name>=<cookie-value>
 	$cookie_t:=$cookieName_t+"="
 	
 	$type_l:=Value type:C1509($2)
@@ -251,9 +251,9 @@ Function cookie
 	
 	If ($numParam_l<3)
 		
-		  // options parameter omitted
-		  // use default encoding
-		$cookie_t:=$cookie_t+encodeURIComponent ($cookieValue_t)
+		// options parameter omitted
+		// use default encoding
+		$cookie_t:=$cookie_t+encodeURIComponent($cookieValue_t)
 		
 	Else 
 		
@@ -262,40 +262,40 @@ Function cookie
 		
 		If ($options_o.encode#Null:C1517)
 			
-			  // use specified encoding
+			// use specified encoding
 			$cookieValue_t:=$options_o.encode.call($cookieValue_t)
 			
 		Else 
 			
-			  // use default encoding
-			$cookieValue_t:=encodeURIComponent ($cookieValue_t)
+			// use default encoding
+			$cookieValue_t:=encodeURIComponent($cookieValue_t)
 			
 		End if 
 		
 		$cookie_t:=$cookie_t+$cookieValue_t
 		
-		  // Expires=<date>
+		// Expires=<date>
 		If ($options_o.expires#Null:C1517) & ($options_o.maxAge=Null:C1517)
 			
-			$cookie_t:=$cookie_t+"; Expires="+String:C10($options_o.expires.date;Date RFC 1123:K1:11;Time:C179($options_o.expires.time))
+			$cookie_t:=$cookie_t+"; Expires="+String:C10($options_o.expires.date; Date RFC 1123:K1:11; Time:C179($options_o.expires.time))
 			
 		End if 
 		
-		  // Max-Age=<number>
+		// Max-Age=<number>
 		If ($options_o.maxAge#Null:C1517)
 			
 			$cookie_t:=$cookie_t+"; Max-Age="+String:C10($options_o.maxAge)
 			
 		End if 
 		
-		  // Domain=<domain-value>
+		// Domain=<domain-value>
 		If ($options_o.domain#Null:C1517)
 			
 			$cookie_t:=$cookie_t+"; Domain="+String:C10($options_o.domain)
 			
 		End if 
 		
-		  // Path=<path-value>
+		// Path=<path-value>
 		If ($options_o.path#Null:C1517)
 			
 			$cookie_t:=$cookie_t+"; Path="+$options_o.path
@@ -306,7 +306,7 @@ Function cookie
 			
 		End if 
 		
-		  // Secure
+		// Secure
 		Case of 
 			: ($options_o.secure=Null:C1517)
 			: ($options_o.secure=False:C215)
@@ -316,7 +316,7 @@ Function cookie
 				
 		End case 
 		
-		  // HttpOnly
+		// HttpOnly
 		Case of 
 			: ($options_o.httpOnly#Null:C1517)
 				
@@ -328,7 +328,7 @@ Function cookie
 				
 		End case 
 		
-		  // SameSite=<samesite-value>
+		// SameSite=<samesite-value>
 		Case of 
 			: ($options_o.sameSite=Null:C1517)
 				
@@ -348,7 +348,7 @@ Function cookie
 		
 	End if 
 	
-	$0:=This:C1470.append("Set-Cookie";$cookie_t)
+	$0:=This:C1470.append("Set-Cookie"; $cookie_t)
 	
 Function clearCookie
 	
@@ -367,8 +367,8 @@ Function clearCookie
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$cookieName_t)
-	C_OBJECT:C1216($2;$options_o)
+	C_TEXT:C284($1; $cookieName_t)
+	C_OBJECT:C1216($2; $options_o)
 	C_OBJECT:C1216($0)
 	
 	$cookieName_t:=$1
@@ -380,11 +380,11 @@ Function clearCookie
 		
 	Else 
 		
-		$options_o:=New object:C1471("maxAge";0)
+		$options_o:=New object:C1471("maxAge"; 0)
 		
 	End if 
 	
-	$0:=This:C1470.cookie($cookieName_t;"";$options_o)
+	$0:=This:C1470.cookie($cookieName_t; ""; $options_o)
 	
 Function download
 	
@@ -426,10 +426,10 @@ Function download
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$path_t)
-	C_TEXT:C284($2;$filename_t)
-	C_OBJECT:C1216($3;$options_o)
-	C_OBJECT:C1216($4;$callback_o)
+	C_TEXT:C284($1; $path_t)
+	C_TEXT:C284($2; $filename_t)
+	C_OBJECT:C1216($3; $options_o)
+	C_OBJECT:C1216($4; $callback_o)
 	C_OBJECT:C1216($0)
 	
 	C_LONGINT:C283($numParam_l)
@@ -468,9 +468,9 @@ Function download
 		
 	End if 
 	
-	  // sets Content-Disposition and Content-Type headers
-	This:C1470.attachment(Choose:C955($filename_t="";$path_t;$filename_t))
-	This:C1470.sendFile($path_t;$options_o;$callback_o)
+	// sets Content-Disposition and Content-Type headers
+	This:C1470.attachment(Choose:C955($filename_t=""; $path_t; $filename_t))
+	This:C1470.sendFile($path_t; $options_o; $callback_o)
 	
 	$0:=This:C1470
 	
@@ -521,19 +521,19 @@ Function format
 * @author HARADA Koichi
 */
 	
-	C_OBJECT:C1216($1;$acceptableMimes_o)
+	C_OBJECT:C1216($1; $acceptableMimes_o)
 	
 	C_COLLECTION:C1488($acceptableMimes_c)
 	C_OBJECT:C1216($request_o)
-	C_TEXT:C284($mime_t;$matchMime_t)
+	C_TEXT:C284($mime_t; $matchMime_t)
 	
 	$acceptableMimes_o:=$1
 	
-	  // populate acceptable mimetype list
+	// populate acceptable mimetype list
 	$acceptableMimes_c:=New collection:C1472()
-	For each ($mime_t;$acceptableMimes_o)
+	For each ($mime_t; $acceptableMimes_o)
 		
-		If (Position:C15("/";$mime_t)>0)
+		If (Position:C15("/"; $mime_t)>0)
 			
 			$acceptableMimes_c.push($mime_t)
 			
@@ -578,7 +578,7 @@ Function get
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$headerName_t)
+	C_TEXT:C284($1; $headerName_t)
 	C_VARIANT:C1683($0)
 	
 	C_TEXT:C284($headerValue_t)
@@ -586,7 +586,7 @@ Function get
 	
 	$headerName_t:=$1
 	
-	$queryResult_c:=This:C1470.__headers__.query("name = :1";$headerName_t)
+	$queryResult_c:=This:C1470.__headers__.query("name = :1"; $headerName_t)
 	
 	Case of 
 		: ($headerName_t="Set-Cookie")
@@ -668,17 +668,17 @@ Function links
 * @author HARADA Koichi
 */
 	
-	C_OBJECT:C1216($1;$links_o)
+	C_OBJECT:C1216($1; $links_o)
 	C_OBJECT:C1216($0)
 	
-	C_TEXT:C284($relKey_t;$uri_t)
+	C_TEXT:C284($relKey_t; $uri_t)
 	
 	$links_o:=$1
 	
-	For each ($relKey_t;$links_o)
+	For each ($relKey_t; $links_o)
 		
 		$uri_t:=$links_o[$relKey_t]
-		This:C1470.append("Link";"<"+$uri_t+">; rel=\""+$relKey_t+"\"")
+		This:C1470.append("Link"; "<"+$uri_t+">; rel=\""+$relKey_t+"\"")
 		
 	End for each 
 	
@@ -699,24 +699,24 @@ Function location
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$path_t)
+	C_TEXT:C284($1; $path_t)
 	C_OBJECT:C1216($0)
 	
-	C_COLLECTION:C1488($headers_c;$queryResult_c)
+	C_COLLECTION:C1488($headers_c; $queryResult_c)
 	
 	$path_t:=$1
 	
 	If ($path_t="back")
 		
-		ARRAY TEXT:C222($headerNames_at;0)
-		ARRAY TEXT:C222($headerValues_at;0)
-		WEB GET HTTP HEADER:C697($headerNames_at;$headerValues_at)
+		ARRAY TEXT:C222($headerNames_at; 0)
+		ARRAY TEXT:C222($headerValues_at; 0)
+		WEB GET HTTP HEADER:C697($headerNames_at; $headerValues_at)
 		$headers_c:=New collection:C1472()
-		ARRAY TO COLLECTION:C1563($headers_c;$headerNames_at;"name";$headerValues_at;"value")
-		$queryResult_c:=$headers_c.query("name = :1";"Referer")
+		ARRAY TO COLLECTION:C1563($headers_c; $headerNames_at; "name"; $headerValues_at; "value")
+		$queryResult_c:=$headers_c.query("name = :1"; "Referer")
 		If ($queryResult_c.length=0)
 			
-			  // No Referer header present
+			// No Referer header present
 			$path_t:="/"
 			
 		Else 
@@ -727,7 +727,7 @@ Function location
 		
 	End if 
 	
-	This:C1470.set("Location";$path_t)
+	This:C1470.set("Location"; $path_t)
 	
 	$0:=This:C1470
 	
@@ -748,30 +748,30 @@ Function redirect
 	C_TEXT:C284($2)
 	C_OBJECT:C1216($0)
 	
-	C_LONGINT:C283($type_l;$statusCode_l)
-	C_TEXT:C284($statusCode_t;$path_t)
+	C_LONGINT:C283($type_l; $statusCode_l)
+	C_TEXT:C284($path_t)
 	
 	$type_l:=Value type:C1509($1)
 	
 	Case of 
 		: ($type_l=Is longint:K8:6) | ($type_l=Is real:K8:4)
 			
-			  // $1 is status code and $2 is path
+			// $1 is status code and $2 is path
 			$statusCode_l:=$1
 			$path_t:=$2
 			
 		: ($type_l=Is text:K8:3)
 			
-			  // $1 is path
+			// $1 is path
 			$statusCode_l:=302
 			$path_t:=$1
 			
 	End case 
 	
-	This:C1470.status($statusCode_t)
+	This:C1470.status($statusCode_l)
 	
-	  // Set http headers
-	$formula_o:=Formula:C1597(RS_setHeaders )
+	// Set http headers
+	$formula_o:=Formula:C1597(RS_setHeaders)
 	$formula_o.call(This:C1470)
 	
 	WEB SEND HTTP REDIRECT:C659($path_t)
@@ -816,39 +816,39 @@ Function render
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$path_t)
-	C_OBJECT:C1216($2;$locals_o)
-	C_OBJECT:C1216($3;$callback_o)
+	C_TEXT:C284($1; $path_t)
+	C_OBJECT:C1216($2; $locals_o)
+	C_OBJECT:C1216($3; $callback_o)
 	C_OBJECT:C1216($0)
 	
-	C_TEXT:C284($dynamicFolderPath_t;$errorHandler_t;$systemPath_t;$content_t;$mime_t;$webServerName_t)
+	C_TEXT:C284($dynamicFolderPath_t; $errorHandler_t; $systemPath_t; $content_t; $mime_t; $webServerName_t)
 	C_LONGINT:C283($numParam_l)
-	C_OBJECT:C1216($folder_o;$filePath_o;$file_o)
+	C_OBJECT:C1216($folder_o; $filePath_o; $file_o)
 	C_COLLECTION:C1488($error_c)
 	
-	  //#####
-	  // Checks prerequisite
-	  // Target template MUST be searched from inside of dynamicFolder
-	  // folder to prevent path traversal.
-	  //#####
+	//#####
+	// Checks prerequisite
+	// Target template MUST be searched from inside of dynamicFolder
+	// folder to prevent path traversal.
+	//#####
 	
-	$errorHandler_t:=error_try 
+	$errorHandler_t:=error_try
 	
 	$path_t:=$1
 	
-	  // The template path MUST not contain "../"
-	ASSERT:C1129(Position:C15("../";$path_t)=0;Current method name:C684+" : Template path cannot contain \"../\".")
+	// The template path MUST not contain "../"
+	ASSERT:C1129(Position:C15("../"; $path_t)=0; Current method name:C684+" : Template path cannot contain \"../\".")
 	
-	  // Do not use USE statement here because don't want to block other web processes
-	  // dynamicFolder folder MUST present
+	// Do not use USE statement here because don't want to block other web processes
+	// dynamicFolder folder MUST present
 	$webServerName_t:=This:C1470.__webServer__.name
 	$folder_o:=Storage:C1525[$webServerName_t].componentOptions.dynamicFolder
-	ASSERT:C1129($folder_o.exists;Current method name:C684+" : dynamicFolder folder must exist.")
+	ASSERT:C1129($folder_o.exists; Current method name:C684+" : dynamicFolder folder must exist.")
 	
-	  // If template file path starts with "/", remove it
+	// If template file path starts with "/", remove it
 	While ($path_t="/@")
 		
-		$path_t:=Substring:C12($path_t;2)
+		$path_t:=Substring:C12($path_t; 2)
 		
 	End while 
 	
@@ -857,52 +857,52 @@ Function render
 	$dynamicFolderPath_t:=$folder_o.platformPath
 	$path_t:=$file_o.platformPath
 	
-	  // Again make sure the path still inside dynamicFolder folder
-	ASSERT:C1129(Position:C15($dynamicFolderPath_t;$path_t)=1;Current method name:C684+"Template path is out of dynamicFolder folder.")
+	// Again make sure the path still inside dynamicFolder folder
+	ASSERT:C1129(Position:C15($dynamicFolderPath_t; $path_t)=1; Current method name:C684+"Template path is out of dynamicFolder folder.")
 	
-	  // Make sure the template file present
-	ASSERT:C1129($file_o.exists;Current method name:C684+"Template file cannot be found.")
+	// Make sure the template file present
+	ASSERT:C1129($file_o.exists; Current method name:C684+"Template file cannot be found.")
 	
 	$numParam_l:=Count parameters:C259
-	If (error_catch ($errorHandler_t))
+	If (error_catch($errorHandler_t))
 		
 		If ($numParam_l>=3)
 			
 			$callback_o:=$3
-			$error_c:=error_get 
-			$callback_o.call(Null:C1517;$error_c)
+			$error_c:=error_get
+			$callback_o.call(Null:C1517; $error_c)
 			
 		End if 
 		
 	Else 
 		
-		  // Prerequisite passed
+		// Prerequisite passed
 		
-		$errorHandler_t:=error_try 
+		$errorHandler_t:=error_try
 		
 		$content_t:=$file_o.getText("UTF-8")
 		
 		Case of 
 			: ($numParam_l=1)
 				
-				PROCESS 4D TAGS:C816($content_t;$content_t)
+				PROCESS 4D TAGS:C816($content_t; $content_t)
 				
 			: ($numParam_l>=2)
 				
 				$locals_o:=$2
-				PROCESS 4D TAGS:C816($content_t;$content_t;$locals_o)
+				PROCESS 4D TAGS:C816($content_t; $content_t; $locals_o)
 				
 		End case 
 		
 		This:C1470.type($file_o.extension).send($content_t)
 		
-		If (error_catch ($errorHandler_t))
+		If (error_catch($errorHandler_t))
 			
 			If ($numParam_l>=3)
 				
 				$callback_o:=$3
-				$error_c:=error_get 
-				$callback_o.call(Null:C1517;$error_c)
+				$error_c:=error_get
+				$callback_o.call(Null:C1517; $error_c)
 				
 			End if 
 			
@@ -945,7 +945,7 @@ Function send
 	C_OBJECT:C1216($0)
 	
 	C_LONGINT:C283($type_l)
-	C_TEXT:C284($content_t;$contentType_t)
+	C_TEXT:C284($content_t; $contentType_t)
 	C_OBJECT:C1216($formula_o)
 	
 	$type_l:=Value type:C1509($1)
@@ -963,8 +963,8 @@ Function send
 	
 	If ($contentType_t="")
 		
-		  // It is not previously specified.
-		  // Sets to default
+		// It is not previously specified.
+		// Sets to default
 		Case of 
 			: ($type_l=Is text:K8:3)
 				$contentType_t:="text/html"
@@ -979,26 +979,26 @@ Function send
 		
 	Else 
 		
-		  // It is previously specified.
-		  // Remove it from header storage
-		$formula_o:=Formula:C1597(RS_remove )
-		$formula_o.call(This:C1470;"Content-Type")
+		// It is previously specified.
+		// Remove it from header storage
+		$formula_o:=Formula:C1597(RS_remove)
+		$formula_o.call(This:C1470; "Content-Type")
 		
 	End if 
 	
-	  // Set http headers
-	$formula_o:=Formula:C1597(RS_setHeaders )
+	// Set http headers
+	$formula_o:=Formula:C1597(RS_setHeaders)
 	$formula_o.call(This:C1470)
 	
-	  // Send response
+	// Send response
 	Case of 
 		: ($type_l=Is text:K8:3) | ($type_l=Is object:K8:27) | ($type_l=Is collection:K8:32)
 			
-			WEB SEND TEXT:C677($content_t;$contentType_t)
+			WEB SEND TEXT:C677($content_t; $contentType_t)
 			
 		: ($type_l=Is BLOB:K8:12)
 			
-			WEB SEND BLOB:C654($1;$contentType_t)
+			WEB SEND BLOB:C654($1; $contentType_t)
 			
 	End case 
 	
@@ -1051,38 +1051,38 @@ Function sendFile
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$path_t)
-	C_OBJECT:C1216($2;$options_o)
-	C_OBJECT:C1216($3;$callback_o)
+	C_TEXT:C284($1; $path_t)
+	C_OBJECT:C1216($2; $options_o)
+	C_OBJECT:C1216($3; $callback_o)
 	C_OBJECT:C1216($0)
 	
-	C_TEXT:C284($errorHandler_t;$dynamicFolderPath_t;$systemPath_t;$headerValue_t;$attName_t)
+	C_TEXT:C284($errorHandler_t; $dynamicFolderPath_t; $systemPath_t; $headerValue_t; $attName_t)
 	C_LONGINT:C283($numParam_l)
-	C_OBJECT:C1216($callback_o;$filePath_o;$formula_o;$file_o;$folder_o)
+	C_OBJECT:C1216($callback_o; $filePath_o; $formula_o; $file_o; $folder_o)
 	C_COLLECTION:C1488($error_c)
 	
-	  //#####
-	  // Checks prerequisite
-	  // Target file MUST be searched from inside of dynamicFolder
-	  // folder to prevent path traversal.
-	  //#####
-	$errorHandler_t:=error_try 
+	//#####
+	// Checks prerequisite
+	// Target file MUST be searched from inside of dynamicFolder
+	// folder to prevent path traversal.
+	//#####
+	$errorHandler_t:=error_try
 	
 	$path_t:=$1
 	
-	  // The file path MUST not contain "../"
-	ASSERT:C1129(Position:C15("../";$path_t)=0;Current method name:C684+" : File path cannot contain \"../\".")
+	// The file path MUST not contain "../"
+	ASSERT:C1129(Position:C15("../"; $path_t)=0; Current method name:C684+" : File path cannot contain \"../\".")
 	
-	  // Do not use USE statement here because don't want to block other web processes
-	  // dynamicFolder folder MUST present
+	// Do not use USE statement here because don't want to block other web processes
+	// dynamicFolder folder MUST present
 	$webServerName_t:=This:C1470.__webServer__.name
 	$folder_o:=Storage:C1525[$webServerName_t].componentOptions.dynamicFolder
-	ASSERT:C1129($folder_o.exists;Current method name:C684+" : dynamicFolder folder must exist.")
+	ASSERT:C1129($folder_o.exists; Current method name:C684+" : dynamicFolder folder must exist.")
 	
-	  // If file path starts with "/", remove it
+	// If file path starts with "/", remove it
 	While ($path_t="/@")
 		
-		$path_t:=Substring:C12($path_t;2)
+		$path_t:=Substring:C12($path_t; 2)
 		
 	End while 
 	
@@ -1091,28 +1091,28 @@ Function sendFile
 	$dynamicFolderPath_t:=$folder_o.platformPath
 	$path_t:=$file_o.platformPath
 	
-	  // Again make sure the path still inside dynamicFolder folder
-	ASSERT:C1129(Position:C15($dynamicFolderPath_t;$path_t)=1;Current method name:C684+"File path is out of dynamicFolder folder.")
+	// Again make sure the path still inside dynamicFolder folder
+	ASSERT:C1129(Position:C15($dynamicFolderPath_t; $path_t)=1; Current method name:C684+"File path is out of dynamicFolder folder.")
 	
-	  // Make sure the file present
-	ASSERT:C1129($file_o.exists;Current method name:C684+"Template file cannot be found.")
+	// Make sure the file present
+	ASSERT:C1129($file_o.exists; Current method name:C684+"Template file cannot be found.")
 	
 	$numParam_l:=Count parameters:C259
-	If (error_catch ($errorHandler_t))
+	If (error_catch($errorHandler_t))
 		
 		If ($numParam_l>=3)
 			
 			$callback_o:=$3
-			$error_c:=error_get 
-			$callback_o.call(Null:C1517;$error_c)
+			$error_c:=error_get
+			$callback_o.call(Null:C1517; $error_c)
 			
 		End if 
 		
 	Else 
 		
-		  // Prerequisite passed
+		// Prerequisite passed
 		
-		  // Sets Content-Type header if it's not previously set
+		// Sets Content-Type header if it's not previously set
 		If (This:C1470.get("Content-Type")="")
 			
 			If ($file_o.extension#"")
@@ -1123,7 +1123,7 @@ Function sendFile
 			
 		End if 
 		
-		  // Set options
+		// Set options
 		If ($numParam_l>=2)
 			
 			$options_o:=$2
@@ -1141,7 +1141,7 @@ Function sendFile
 						
 				End case 
 				
-				This:C1470.set("Cache-Control";$headerValue_t)
+				This:C1470.set("Cache-Control"; $headerValue_t)
 				
 			End if 
 			
@@ -1150,16 +1150,16 @@ Function sendFile
 				: ($options_o.lastModified=False:C215)
 				Else 
 					
-					$headerValue_t:=String:C10($file_o.modificationDate;Date RFC 1123:K1:11;Time:C179($file_o.modificationTime))
-					This:C1470.set("Last-Modified";$headerValue_t)
+					$headerValue_t:=String:C10($file_o.modificationDate; Date RFC 1123:K1:11; Time:C179($file_o.modificationTime))
+					This:C1470.set("Last-Modified"; $headerValue_t)
 					
 			End case 
 			
 			If ($options_o.headers#Null:C1517)
 				
-				For each ($attName_t;$options_o.headers)
+				For each ($attName_t; $options_o.headers)
 					
-					This:C1470.set($attName_t;$options_o[$attName_t])
+					This:C1470.set($attName_t; $options_o[$attName_t])
 					
 				End for each 
 				
@@ -1167,18 +1167,18 @@ Function sendFile
 			
 		End if 
 		
-		  // Set http headers
-		$formula_o:=Formula:C1597(RS_setHeaders )
+		// Set http headers
+		$formula_o:=Formula:C1597(RS_setHeaders)
 		$formula_o.call(This:C1470)
 		
-		  // Then send the file
-		  // It seems WEB SEND FILE command now accepts
-		  // absolute path that points outside of
-		  // HTML root folder set in 4D preferences.
-		$errorHandler_t:=error_try 
+		// Then send the file
+		// It seems WEB SEND FILE command now accepts
+		// absolute path that points outside of
+		// HTML root folder set in 4D preferences.
+		$errorHandler_t:=error_try
 		WEB SEND FILE:C619($path_t)
 		
-		If (error_catch ($errorHandler_t))
+		If (error_catch($errorHandler_t))
 			
 			Case of 
 				: ($numParam_l<3)
@@ -1186,8 +1186,8 @@ Function sendFile
 				Else 
 					
 					$callback_o:=$3
-					$error_c:=error_get 
-					$callback_o.call(Null:C1517;$error_c)
+					$error_c:=error_get
+					$callback_o.call(Null:C1517; $error_c)
 					
 			End case 
 			
@@ -1220,14 +1220,14 @@ Function sendStatus
 * @author HARADA Koichi
 */
 	
-	C_LONGINT:C283($1;$statusCode_l)
+	C_LONGINT:C283($1; $statusCode_l)
 	C_OBJECT:C1216($0)
 	
 	C_TEXT:C284($statusText_t)
 	
 	$statusCode_l:=$1
 	
-	$statusText_t:=RS_getStatusText ($statusCode_l)
+	$statusText_t:=RS_getStatusText($statusCode_l)
 	
 	This:C1470.status($statusCode_l).send($statusText_t)
 	
@@ -1252,14 +1252,14 @@ Function set
 	C_OBJECT:C1216($0)
 	
 	C_OBJECT:C1216($headersToSet_o)
-	C_TEXT:C284($name_t;$value_t;$fieldName_t)
+	C_TEXT:C284($name_t; $value_t; $fieldName_t)
 	
 	$type_l:=Value type:C1509($1)
 	
 	Case of 
 		: ($type_l=Is text:K8:3)
 			
-			$headersToSet_o:=New object:C1471($1;$2)
+			$headersToSet_o:=New object:C1471($1; $2)
 			
 		: ($type_l=Is object:K8:27)
 			
@@ -1267,15 +1267,15 @@ Function set
 			
 	End case 
 	
-	For each ($name_t;$headersToSet_o)
+	For each ($name_t; $headersToSet_o)
 		
 		$value_t:=$headersToSet_o[$name_t]
 		
-		  // Removes current entry
-		This:C1470.__headers__:=This:C1470.__headers__.query("name != :1";$fieldName_t)
+		// Removes current entry
+		This:C1470.__headers__:=This:C1470.__headers__.query("name != :1"; $fieldName_t)
 		
-		  // Then add new one
-		This:C1470.__headers__.push(New object:C1471("name";$name_t;"value";$value_t))
+		// Then add new one
+		This:C1470.__headers__.push(New object:C1471("name"; $name_t; "value"; $value_t))
 		
 	End for each 
 	
@@ -1291,16 +1291,16 @@ Function status
 * @arthor HARADA Koichi
 */
 	
-	C_LONGINT:C283($1;$statusCode_l)
+	C_LONGINT:C283($1; $statusCode_l)
 	C_OBJECT:C1216($0)
 	
 	C_TEXT:C284($statusText_t)
 	
 	$statusCode_l:=$1
 	
-	$statusText_t:=RS_getStatusText ($statusCode_l)
+	$statusText_t:=RS_getStatusText($statusCode_l)
 	
-	This:C1470.set("X-STATUS";String:C10($statusCode_l)+" "+$statusText_t)
+	This:C1470.set("X-STATUS"; String:C10($statusCode_l)+" "+$statusText_t)
 	
 	$0:=This:C1470
 	
@@ -1316,14 +1316,14 @@ Function type
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$type_t)
+	C_TEXT:C284($1; $type_t)
 	C_OBJECT:C1216($0)
 	
 	C_COLLECTION:C1488($queryResult_c)
 	
 	$type_t:=$1
 	
-	If (Position:C15("/";$type_t)=0)
+	If (Position:C15("/"; $type_t)=0)
 		
 		Case of 
 			: (Length:C16($type_t)=0)
@@ -1332,15 +1332,15 @@ Function type
 				
 			Else 
 				
-				  // removes the first period.
-				$type_t:=Substring:C12($type_t;2)
+				// removes the first period.
+				$type_t:=Substring:C12($type_t; 2)
 				
 		End case 
 		
-		  // Do not use USE statement here because don't want to block other web processes
+		// Do not use USE statement here because don't want to block other web processes
 		If (Storage:C1525.__mimeTypes__#Null:C1517)
 			
-			$queryResult_c:=Storage:C1525.__mimeTypes__.query("extension = :1";$type_t)
+			$queryResult_c:=Storage:C1525.__mimeTypes__.query("extension = :1"; $type_t)
 			If ($queryResult_c.length=1)
 				
 				$type_t:=$queryResult_c[0].mimetype
@@ -1353,7 +1353,7 @@ Function type
 	
 	If ($type_t#"")
 		
-		This:C1470.set("Content-Type";$type_t)
+		This:C1470.set("Content-Type"; $type_t)
 		
 	End if 
 	
@@ -1370,7 +1370,7 @@ Function vary
 * @author HARADA Koichi
 */
 	
-	C_TEXT:C284($1;$value_t)
+	C_TEXT:C284($1; $value_t)
 	C_OBJECT:C1216($0)
 	
 	C_TEXT:C284($currentValue_t)
@@ -1381,7 +1381,7 @@ Function vary
 	
 	If ($currentValue_t="")
 		
-		This:C1470.set("Vary";$value_t)
+		This:C1470.set("Vary"; $value_t)
 		
 	End if 
 	
