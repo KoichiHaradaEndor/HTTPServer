@@ -381,7 +381,11 @@ Function clearCookie
 		
 	Else 
 		
-		$options_o:=New object:C1471("maxAge"; 0)
+		$options_o:=New object:C1471(\
+			"httpOnly"; True:C214; \
+			"path"; "/"; \
+			"maxAge"; 0\
+			)
 		
 	End if 
 	
