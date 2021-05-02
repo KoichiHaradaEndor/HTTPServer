@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
-<base name="" uuid="2422E87A0AFA4D78A7208E36D43A4CF0" collation_locale="ja">
+<base name="Test_HTTPServer" uuid="2422E87A0AFA4D78A7208E36D43A4CF0" collation_locale="ja">
 	<schema name="DEFAULT_SCHEMA"/>
+	<base_extra __stringCompHash="icu:68.1.0, alternate=search" __keywordBuildingHash="mecab:0.996;sys.dic:102;"/>
 </base>
