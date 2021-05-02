@@ -6,17 +6,21 @@
 * @author HARADA Koichi
 */
 
-C_LONGINT:C283($nextIndex_l;$length_l)
-C_OBJECT:C1216($formula_o)
+C_LONGINT:C283($nextIndex_l; $length_l)
+C_OBJECT:C1216($process_o)
 
-$formula_o:=This:C1470
+$process_o:=This:C1470
 
-$nextIndex_l:=$formula_o.index+1
-$length_l:=$formula_o.formulas.length
+$nextIndex_l:=$process_o.index+1
+$length_l:=$process_o.formulas.length
 
 If ($nextIndex_l<$length_l)
 	
-	$formula_o.index:=$nextIndex_l
-	$formula_o.formulas[$formula_o.index].call($formula_o;$formula_o.request;$formula_o.response;$formula_o.next)
+	$process_o.index:=$nextIndex_l
+	
+	$process_o.request.params:=$process_o.formulas[$process_o.index].params
+	$process_o.request.baseUrl:=$process_o.formulas[$process_o.index].baseUrl
+	
+	$process_o.formulas[$process_o.index].callback.call($process_o; $process_o.request; $process_o.response; $process_o.next)
 	
 End if 

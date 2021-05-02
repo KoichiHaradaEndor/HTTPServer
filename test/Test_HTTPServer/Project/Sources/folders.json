@@ -1,10 +1,4 @@
 ﻿{
-	"(Test7-2)": {
-		"methods": [
-			"(Test7_2_Code)",
-			"(Test7_2)"
-		]
-	},
 	"Test": {
 		"groups": [
 			"Test1",
@@ -165,9 +159,5 @@
 			"Test7_1_ReadCsv"
 		]
 	},
-	"trash": {
-		"groups": [
-			"(Test7-2)"
-		]
-	}
+	"trash": {}
 }

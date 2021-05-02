@@ -222,7 +222,7 @@ $res_o.type("text/plain").send("This is plain text.")</code></pre></p>
                     <pre><code>$res_o.sendFile("test2_2.txt")</code></pre>
                     which sends &quot;test2_2.txt&quot;. The Content-Type response header value is automatically
                     determined by the file extension.</p>
-                <p>For security reason, the file must exists in DocumentRootDynamic path defined in httpServer.conf.
+                <p>For security reason, the file must exists in the folder set via HttpServer.setDynamicFolder function.
                     $res_o.sendFile function look for the specified file in the folder.</p>
 
                 <div><button v-on:click="test2_2Func">Try</button></div>
@@ -247,7 +247,7 @@ $res_o.render("test2_3.txt";$message_o)</code></pre>
                     and the content of &quot;test2_3.txt&quot; is
                     <pre><code>&lt;!--#4DTEXT $1.message--&gt;</code></pre>
                 </p>
-                <p>For security reason, the file must exists in DocumentRootDynamic path defined in httpServer.conf.
+                <p>For security reason, the file must exists in the folder set via HttpServer.setDynamicFolder function.
                     $res_o.render function look for the specified file in the folder.</p>
 
                 <div><button v-on:click="test2_3Func">Try</button></div>
@@ -520,7 +520,9 @@ $router_o.get("/func2";Formula(Test6_1_Func2new ))
 
 $app_o.use("/v2";$router_o)</code></pre>Create Router object then add routes as the same way with HttpServer or VirtualHost. Then append it to the other route definition object.</p>
 
-                <p>This way, you ca define a group of routes then append it to other routes.</p>
+                <p>This way, you can define a group of routes then append it to other route.</p>
+
+                <p>In this case, you can refer to the path on which a router was mounted via Request.baseUrl attribute.</p>
                 
                 <div><button v-on:click="test6_1v1Func1" class="longTitle">Try /v1/func1</button><button v-on:click="test6_1v1Func2" class="longTitle">Try /v1/func2</button><button v-on:click="test6_1v2Func1" class="longTitle">Try /v2/func1</button><button v-on:click="test6_1v2Func2" class="longTitle">Try /v2/func2</button></div>
                 <div><textarea id="test6-1-result" readonly>{{ message_6_1 }}</textarea></div>
