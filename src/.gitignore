@@ -2,6 +2,7 @@
 ######################
 
 /Data/*
+/Documentation/*
 /Logs/*
 /Project/DerivedData/*
 /Project/BuildSettings/*
