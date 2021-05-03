@@ -47,7 +47,7 @@ Nevertheless of the order of the route registration, routes that matches the vir
 
 This class inherit routing function from `Route` class. Please also refer to the reference for details.
 
-`SingleRoute` **VirtualHost.route** (path)
+### `SingleRoute` **VirtualHost.route** (path)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|

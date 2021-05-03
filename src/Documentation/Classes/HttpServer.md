@@ -27,11 +27,11 @@ $app_o:=$cs_o.HttpServer.new(Web Server)
 
 ## Properties
 
-## Functions
+## Methods
 
 ### Starts or stops HTTP server
 
-`object` **HttpServer.start** ()
+### `object` **HttpServer.start** ()
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -54,7 +54,7 @@ $result_o:=$app_o.start()
 
 ---
 
-`text` **HttpServer.stop** ()
+### `text` **HttpServer.stop** ()
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -72,7 +72,7 @@ $app_o.stop()
 
 ---
 
-`object` **HttpServer.restart** ()
+### `object` **HttpServer.restart** ()
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -95,13 +95,13 @@ $result_o:=$app_o.restart()
 
 ### Option
 
-`void` **HttpServer.setOption** (options)
+### `void` **HttpServer.setOption** (options)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |options|object|&#x2192;|Web Server options||
 
-`void` **HttpServer.setOption** (key; value)
+### `void` **HttpServer.setOption** (key; value)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -137,13 +137,13 @@ $app_o.setOption("HTTPPort";8080)
 
 ---
 
-`object` **HttpServer.getOption** ()
+### `object` **HttpServer.getOption** ()
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |return|object|&#x2190;|Web Server options||
 
-`variant` **HttpServer.getOption** (key)
+### `variant` **HttpServer.getOption** (key)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -175,7 +175,7 @@ $httpPort_l:=$app_o.getOption("HTTPPort")
 
 ---
 
-`void` **HttpServer.setDynamicFolder** (dynamicFolder)
+### `void` **HttpServer.setDynamicFolder** (dynamicFolder)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -203,7 +203,7 @@ $app_o.setOption("dynamicFolder";$folder_o)
 
 ---
 
-`object` **HttpServer.getDynamicFolder** ()
+### `object` **HttpServer.getDynamicFolder** ()
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -228,7 +228,7 @@ $folder_o:=$app_o.getDynamicFolder()
 
 This class inherit routing function from `Route` class. Please also refer to the reference for details.
 
-`SingleRoute` **HttpServer.route** (path)
+### `SingleRoute` **HttpServer.route** (path)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|

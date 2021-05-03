@@ -1,6 +1,6 @@
 ﻿# Router class
 
-This class is used to create a group of route definition. Then it will be attached to the HttpServer or the VirtualHost object.
+This class is used to create a group of route definition. Then it can be attached to the HttpServer or the VirtualHost object.
 
 ## Extends
 

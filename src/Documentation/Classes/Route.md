@@ -17,16 +17,16 @@ Do not instantiate this class but use `HttpServer`, `VirtualHost` or `Router` cl
 
 This document is intended to describe following functions.
 
-## Functions
+## Methods
 
-`void` **CallerObj.all** (path; callback)
+### `void` **CallerObj.all** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-`SingleRoute` **CallerObj.all** (callback)
+### `SingleRoute` **CallerObj.all** (callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -94,14 +94,14 @@ Again this causes the same result with the above.
 
 ---
 
-`void` **CallerObj.delete** (path; callback)
+### `void` **CallerObj.delete** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-`SingleRoute` **CallerObj.delete** (callback)
+### `SingleRoute` **CallerObj.delete** (callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -116,14 +116,14 @@ For the description of the parameters, returned value and examples, please refer
 
 ---
 
-`void` **CallerObj.get** (path; callback)
+### `void` **CallerObj.get** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-`SingleRoute` **CallerObj.get** (callback)
+### `SingleRoute` **CallerObj.get** (callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -138,7 +138,7 @@ For the description of the parameters, returned value and examples, please refer
 
 ---
 
-`void` **CallerObj.method** (verb; path; callback)
+### `void` **CallerObj.method** (verb; path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -146,7 +146,7 @@ For the description of the parameters, returned value and examples, please refer
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-`SingleRoute` **CallerObj.method** (verb; callback)
+### `SingleRoute` **CallerObj.method** (verb; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -166,14 +166,14 @@ For the description of other parameters, returned value and examples, please ref
 
 ---
 
-`void` **CallerObj.post** (path; callback)
+### `void` **CallerObj.post** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-`SingleRoute` **CallerObj.post** (callback)
+### `SingleRoute` **CallerObj.post** (callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -188,14 +188,14 @@ For the description of the parameters, returned value and examples, please refer
 
 ---
 
-`void` **CallerObj.put** (path; callback)
+### `void` **CallerObj.put** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-`SingleRoute` **CallerObj.put** (callback)
+### `SingleRoute` **CallerObj.put** (callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -210,21 +210,21 @@ For the description of the parameters, returned value and examples, please refer
 
 ---
 
-`void` **CallerObj.use** (path; callback)
+### `void` **CallerObj.use** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked|optional|
 |callback|formula or collection|&#x2192;|Callback function||
 
-`SingleRoute` **CallerObj.use** (callback)
+### `SingleRoute` **CallerObj.use** (callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |callback|formula or collection|&#x2192;|Callback function||
 |return|object|&#x2190;|CallerObj||
 
-`void` **CallerObj.use** (vhost)
+### `void` **CallerObj.use** (vhost)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|

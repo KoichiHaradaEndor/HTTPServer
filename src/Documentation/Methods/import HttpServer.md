@@ -10,7 +10,7 @@ This is a 4D component, so you should build this source as 4D component and plac
 
 ## Shared Method
 
-`cs` **import HttpServer** ()
+### `cs` **import HttpServer** ()
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -24,7 +24,7 @@ Please refer to "Hello World" bellow.
 
 ---
 
-`void` **OnWebConnection** (webServer; remoteIP; hostIP)
+### `void` **OnWebConnection** (webServer; remoteIP; hostIP)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -34,7 +34,7 @@ Please refer to "Hello World" bellow.
 
 This method is used to handle web request.
 
-Just call this method in your On Web Connectin database method.
+Just call this method in your On Web Connection database method.
 
 Pass Web Server object returned by 4D's `Web Server` command to the first parameter. It tells the component which web server configuration should be loaded.
 
