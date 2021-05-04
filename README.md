@@ -46,7 +46,7 @@ Small sample demo is in the "test" folder. Just launch it with 4D v18 Standalone
 
 ## License
 
-Please refer to "LICENSE" file.
+Please refer to [LICENSE](LICENSE) file.
 
 ## Release Note
 
