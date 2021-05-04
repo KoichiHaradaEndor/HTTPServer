@@ -17,8 +17,6 @@
 	},
 	"Docs": {
 		"methods": [
-			"About Request Object",
-			"About Response Object",
 			"About Storage structure"
 		]
 	},

@@ -14,6 +14,7 @@
 * Storage.{ServerName}.hosts[].hostname | Text | Domain name of the host
 * Storage.{ServerName}.hosts[].routes | Collection | Collection of routes
 * Storage.{ServerName}.hosts[].routes[].method | Text | Used to search by HTTP method value
+* Storage.{ServerName}.hosts[].routes[].baseUrl | Text | Regular expression pattern used to calculate baseUrl property
 * Storage.{ServerName}.hosts[].routes[].path | Text | Regular expression pattern used to search by request path
 * Storage.{ServerName}.hosts[].routes[].callback | Object | Formula reference which is called when above conditions are match
 * Storage.{ServerName}.hosts[].routes[].params | Collection | Collection of keys used for path parameter
