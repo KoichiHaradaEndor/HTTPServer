@@ -7,7 +7,7 @@ This is basic `Route` class.
 It contains common routing functions.
 Any other routing class inherit this class.
 
-## Extends
+#### Extends
 
 None
 
@@ -15,18 +15,20 @@ None
 
 Do not instantiate this class but use `HttpServer`, `VirtualHost` or `Router` classes and/or route object created with `route` function of those classes.
 
-This document is intended to describe following functions.
+This document is intended to describe methods that will be inherited to those instances.
 
 ## Methods
 
-### `void` **CallerObj.all** (path; callback)
+### all()
+
+**CallerObj.all** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-### `SingleRoute` **CallerObj.all** (callback)
+**CallerObj.all** (callback) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -94,14 +96,16 @@ Again this causes the same result with the above.
 
 ---
 
-### `void` **CallerObj.delete** (path; callback)
+### delete()
+
+**CallerObj.delete** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-### `SingleRoute` **CallerObj.delete** (callback)
+**CallerObj.delete** (callback) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -116,14 +120,16 @@ For the description of the parameters, returned value and examples, please refer
 
 ---
 
-### `void` **CallerObj.get** (path; callback)
+### get()
+
+**CallerObj.get** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-### `SingleRoute` **CallerObj.get** (callback)
+**CallerObj.get** (callback) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -138,7 +144,9 @@ For the description of the parameters, returned value and examples, please refer
 
 ---
 
-### `void` **CallerObj.method** (verb; path; callback)
+### method()
+
+**CallerObj.method** (verb; path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -146,7 +154,7 @@ For the description of the parameters, returned value and examples, please refer
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-### `SingleRoute` **CallerObj.method** (verb; callback)
+**CallerObj.method** (verb; callback) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -166,14 +174,16 @@ For the description of other parameters, returned value and examples, please ref
 
 ---
 
-### `void` **CallerObj.post** (path; callback)
+### post()
+
+**CallerObj.post** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-### `SingleRoute` **CallerObj.post** (callback)
+**CallerObj.post** (callback) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -188,14 +198,16 @@ For the description of the parameters, returned value and examples, please refer
 
 ---
 
-### `void` **CallerObj.put** (path; callback)
+### put()
+
+**CallerObj.put** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked||
 |callback|formula or collection|&#x2192;|Callback function||
 
-### `SingleRoute` **CallerObj.put** (callback)
+**CallerObj.put** (callback) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -210,21 +222,23 @@ For the description of the parameters, returned value and examples, please refer
 
 ---
 
-### `void` **CallerObj.use** (path; callback)
+### use()
+
+**CallerObj.use** (path; callback)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |path|text|&#x2192;|The path for which the callback function is invoked|optional|
 |callback|formula or collection|&#x2192;|Callback function||
 
-### `SingleRoute` **CallerObj.use** (callback)
+**CallerObj.use** (callback) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |callback|formula or collection|&#x2192;|Callback function||
 |return|object|&#x2190;|CallerObj||
 
-### `void` **CallerObj.use** (vhost)
+**CallerObj.use** (vhost)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -234,7 +248,7 @@ For the description of the parameters, returned value and examples, please refer
 
 #### When want to use forward match for the `path` comparison
 
-The functions introduced in this section uses "full match" when the `path` comparison is executed. However there are cases "forward match" is appropriate. Typically, when authorization is needed to access your API server, you may want to protect it from access to `"/"` and its all sub directory. In this case, use this function since the route installed with this function uses "forward match" comparison when comparing the route path with requested path.
+The functions introduced in this section uses "full match" when the `path` comparison is executed. However there are cases "forward match" is appropriate. Typically, when authorization is needed to access your API server, you may want to protect it from access to `"/"` and its all sub directory. In this case, use this function since the route installed with this function uses "forward match" comparison when comparing the route path with the requested path.
 
 When `CallerObj` is either `HttpServer` or `VirtualHost` object, and the `path` parameter is omitted, it defaults to `"/"` that means it matches all request paths.
 

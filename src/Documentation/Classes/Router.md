@@ -2,7 +2,7 @@
 
 This class is used to create a group of route definition. Then it can be attached to the HttpServer or the VirtualHost object.
 
-## Extends
+#### Extends
 
 Route
 
@@ -29,10 +29,6 @@ $app_o.use("/foo";$router_o)
 
 In the above case, the get request path "/foo/bar" will invoke ApiMethodName method.
 
-## Properties
-
-## Methods
-
 ### Route configuration
 
-This class inherit routing function from `Route` class. Please refer to the reference for details.
+This class inherit routing methods from `Route` class. Please refer to the [reference](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Route.html) for details.

@@ -2,7 +2,7 @@
 
 This is the class used to add a named host to the HttpServer application.
 
-## Extends
+#### Extends
 
 Route
 
@@ -39,15 +39,15 @@ In the above case, when the host name and the pass combination is:
 
 Nevertheless of the order of the route registration, routes that matches the virtual host name will be selected, if any.
 
-## Properties
-
 ## Methods
 
 ### Route configuration
 
-This class inherit routing function from `Route` class. Please also refer to the reference for details.
+This class inherit routing function from `Route` class. Please also refer to the [reference](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Route.html) for details.
 
-### `SingleRoute` **VirtualHost.route** (path)
+### route()
+
+**VirtualHost.route** (path) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
