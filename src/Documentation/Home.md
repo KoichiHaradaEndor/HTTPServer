@@ -21,7 +21,7 @@ OnWebConnection(Web Server;$3;$4)
 
 ### On Startup database method
 
-Then write following code in On (Server) Startup database method. `Import HttpServer` is also a shared component method that returns `cs` (class store) of the component.
+Then write following code in On (Server) Startup database method. `import HttpServer` is also a shared component method that returns `cs` (class store) of the component.
 
 ```4D
 C_OBJECT($cs_o;$app_o)

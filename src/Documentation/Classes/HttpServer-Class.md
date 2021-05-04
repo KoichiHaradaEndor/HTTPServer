@@ -2,7 +2,7 @@
 
 This is the main application class that contains functions for starting/stopping HTTP server, and routing functions that inherit from `Route` class.
 
-## Extends
+#### Extends
 
 Route
 
@@ -25,13 +25,13 @@ $cs_o:=import HttpServer // Get class store of the component
 $app_o:=$cs_o.HttpServer.new(Web Server)
 ```
 
-## Properties
-
 ## Methods
 
 ### Starts or stops HTTP server
 
-### `object` **HttpServer.start** ()
+### app.start()
+
+**HttpServer.start** () -> object
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -54,7 +54,9 @@ $result_o:=$app_o.start()
 
 ---
 
-### `text` **HttpServer.stop** ()
+### app.stop()
+
+**HttpServer.stop** () -> text
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
