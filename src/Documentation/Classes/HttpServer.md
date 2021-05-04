@@ -1,3 +1,4 @@
+﻿<!-- This is the main application class that contains functions for starting/stopping HTTP server, and routing functions that inherit from Route class. -->
 # HttpServer class
 
 This is the main application class that contains functions for starting/stopping HTTP server, and routing functions that inherit from `Route` class.
@@ -29,7 +30,7 @@ $app_o:=$cs_o.HttpServer.new(Web Server)
 
 ### Starts or stops HTTP server
 
-### HttpServer.start()
+### start()
 
 **HttpServer.start** () -> object
 
@@ -54,7 +55,7 @@ $result_o:=$app_o.start()
 
 ---
 
-### HttpServer.stop()
+### stop()
 
 **HttpServer.stop** () -> text
 
@@ -74,7 +75,7 @@ $app_o.stop()
 
 ---
 
-### HttpServer.restart()
+### restart()
 
 **HttpServer.restart** () -> object
 
@@ -99,7 +100,7 @@ $result_o:=$app_o.restart()
 
 ### Options
 
-### HttpServer.setOption()
+### setOption()
 
 **HttpServer.setOption** (options)
 
@@ -143,7 +144,7 @@ $app_o.setOption("HTTPPort";8080)
 
 ---
 
-### HttpServer.getOption()
+### getOption()
 
 **HttpServer.getOption** () -> object
 
@@ -183,7 +184,7 @@ $httpPort_l:=$app_o.getOption("HTTPPort")
 
 ---
 
-### HttpServer.setDynamicFolder()
+### setDynamicFolder()
 
 **HttpServer.setDynamicFolder** (dynamicFolder)
 
@@ -213,7 +214,7 @@ $app_o.setOption("dynamicFolder";$folder_o)
 
 ---
 
-### HttpServer.getDynamicFolder()
+### getDynamicFolder()
 
 **HttpServer.getDynamicFolder** () -> object
 
@@ -240,7 +241,7 @@ $folder_o:=$app_o.getDynamicFolder()
 
 This class inherit routing function from `Route` class. Please also refer to the reference for details.
 
-### HttpServer.route()
+### route()
 
 **HttpServer.route** (path) -> SingleRoute
 
@@ -272,3 +273,4 @@ In the above case, when "/foo" is requested, according to the HTTP verb, the fol
 * others : RespondAllMethod
 
 ---
+

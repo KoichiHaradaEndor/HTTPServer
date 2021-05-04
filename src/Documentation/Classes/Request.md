@@ -9,7 +9,9 @@ There is no constructor for the `Request` object. The object is created by `Http
 
 ## Properties
 
-### **Request.baseUrl**
+### baseUrl
+
+**Request.baseUrl**
 
 Contains a path on which a router instance was mounted.
 
@@ -29,7 +31,9 @@ $response_o.sendFile($request_o.baseUrl+"/path2.html")
 
 ---
 
-### **Request.body**
+### body
+
+**Request.body**
 
 Contains object type key-value pairs or collection that was submitted in request body. By default, it is undefined, and is populated when the request's Content-Type header value is either application/x-www-form-urlencoded or application/json.
 
@@ -37,7 +41,9 @@ How variables are parsed when the Content-Type is application/x-www-form-urlenco
 
 ---
 
-### **Request.cookies**
+### cookies
+
+**Request.cookies**
 
 This property is an object that contains cookies sent in the request header. The structure of the object is:
 
@@ -52,37 +58,49 @@ If no cookies are sent, it defaults to {}.
 
 ---
 
-### **Request.hostname**
+### hostname
+
+**Request.hostname**
 
 Contains hostname derived from the Host HTTP header.
 
 ---
 
-### **Request.ip**
+### ip
+
+**Request.ip**
 
 Contains the remote IP address of the request.
 
 ---
 
-### **Request.method**
+### method
+
+**Request.method**
 
 Contains HTTP method of the request.
 
 ---
 
-### **Request.path**
+### path
+
+**Request.path**
 
 Contains the path part of the request URI.
 
 ---
 
-### **Request.protocol**
+### protocol
+
+**Request.protocol**
 
 Contains the request protocol, either "http" or "https".
 
 ---
 
-### **Request.query**
+### query
+
+**Request.query**
 
 This property is an object that contains query string parameter in the URL. If query string is not included, the default is empty object.
 
@@ -118,13 +136,17 @@ $req.query["param"] returns "value2"
 
 ---
 
-### **Request.secure**
+### secure
+
+**Request.secure**
 
 Boolean property that indicates if the request is sent over TLS connection. In this case, it's set to true.
 
 ---
 
-### **Request.xhr**
+### xhr
+
+**Request.xhr**
 
 Boolean property which is true if the X-Requested-With request header is "XMLHttpRequest".
 
@@ -132,7 +154,9 @@ Boolean property which is true if the X-Requested-With request header is "XMLHtt
 
 ## Methods
 
-### `text` **Request.accepts** (candidates)
+### accepts()
+
+**Request.accepts** (candidates) -> text
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -160,7 +184,9 @@ $contentType_t:=$req_o.accept("text/html")
 
 ---
 
-### `text` **Request.get** (fieldName)
+### get()
+
+**Request.get** (fieldName) -> text
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
