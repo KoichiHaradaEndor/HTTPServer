@@ -1,3 +1,5 @@
+[![GitHub](https://img.shields.io/github/license/KoichiHaradaEndor/HTTPServer?style=flat-square)](LICENSE)
+
 # HTTPServer
 
 ## Overview
