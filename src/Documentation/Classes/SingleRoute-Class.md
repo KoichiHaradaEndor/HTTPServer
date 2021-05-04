@@ -1,4 +1,4 @@
-﻿# SingleRoute class
+# SingleRoute class
 
 DO NOT USE THIS CLASS DIRECTLY.
 THIS CLASS WILL BE INSTANTIATED INTERNALLY.

@@ -1,4 +1,4 @@
-﻿# HttpServer class
+# HttpServer class
 
 This is the main application class that contains functions for starting/stopping HTTP server, and routing functions that inherit from `Route` class.
 

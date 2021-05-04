@@ -1,4 +1,4 @@
-﻿# VirtualHost class
+# VirtualHost class
 
 This is the class used to add a named host to the HttpServer application.
 
