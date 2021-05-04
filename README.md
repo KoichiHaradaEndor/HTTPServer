@@ -26,7 +26,7 @@ Please refer to the [doc](https://koichiharadaendor.github.io/HTTPServer/).
 
 - [About HTTPServer component](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Home.html)
 - [import HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/import%20HttpServer.html)
-- [OnWebConnection](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/OnWebConnection.html)
+- [OnWebConnection](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/OnWebConnection.html)
 
 ## Example
 
