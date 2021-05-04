@@ -20,7 +20,7 @@ This is a 4D component, so you should build this source as 4D component and plac
 
 ## Usage
 
-Please refer to the [doc](src/Documentation/Home.md).
+Please refer to the [doc](https://koichiharadaendor.github.io/HTTPServer/).
 
 Also small sample demo is in the "test" folder. Just launch it with 4D v18 Standalone and connect to it with your favorite web browser via http://localhost/.
 
