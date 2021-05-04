@@ -1,6 +1,8 @@
-﻿# OnWebConnection
+﻿<!--OnWebConnection(object; text; text)
+This method returns the class store object of the component.-->
+### OnWebConnection
 
-### `void` **OnWebConnection** (webServer; remoteIP; hostIP)
+**OnWebConnection** (webServer; remoteIP; hostIP)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -14,10 +16,6 @@ Just call this method in your On Web Connection database method.
 
 Pass Web Server object returned by 4D's `Web Server` command to the first parameter. It tells the component which web server configuration should be loaded.
 
-Then pass `$3` and `$4` parameter of the On Web Connection database method to the second and the third parameter.
-
-#### Example
-
-Please refer to "Hello World" bellow.
+Then pass `$3` (remoteIP) and `$4` (hostIP) parameter of the On Web Connection database method to the second and the third parameter.
 
 ---
