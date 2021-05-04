@@ -9,7 +9,9 @@ There is no constructor for the `Response` object. The object is created by `Htt
 
 ## Properties
 
-### **Response.locals**
+### locals
+
+**Response.locals**
 
 Object that is used to store any value whose scope is response. It can be accessed in any callback methods passed to route definition. Default is empty object.
 
@@ -25,7 +27,9 @@ Most member functions returns `This` object of `Response` type. So you can call 
 $res_o.type("text/plain").set(New object("X-CUSTOM";"value")).send("This is response text.")
 ```
 
-### `Response` **Response.append** (fieldName; fieldValue)
+### append()
+
+**Response.append** (fieldName; fieldValue) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -51,7 +55,9 @@ $res_o.append("Link";$links_c)
 
 ---
 
-### `Response` **Response.attachment** (fileName)
+### attachment()
+
+**Response.attachment** (fileName) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -68,7 +74,9 @@ Note it does not send file as response. Using `Response.download()` function doe
 
 ---
 
-### `Response` **Response.clearCookie** (cookieName; options)
+### clearCookie()
+
+**Response.clearCookie** (cookieName; options) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -82,7 +90,9 @@ Note that `options` must identical to the existing cookie except expires and max
 
 ---
 
-### `Response` **Response.cookie** (cookieName; cookieValue; options)
+### cookie()
+
+**Response.cookie** (cookieName; cookieValue; options) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -133,7 +143,9 @@ If the value is NOT one of the above, it is not set.
 
 ---
 
-### `Response` **Response.download** (filePath; fileName; options; callback)
+### download()
+
+**Response.download** (filePath; fileName; options; callback) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -161,7 +173,9 @@ Response.sendFile() // send file
 
 ---
 
-### `Response` **Response.end** ()
+### end()
+
+**Response.end** () -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -173,7 +187,9 @@ Use this method when no data is sent as response body but only headers are sent.
 
 ---
 
-### `Response` **Response.format** (mimeTypes)
+### format()
+
+**Response.format** (mimeTypes) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -214,7 +230,9 @@ In the above case, if the "Accept" request header indicates JSON file is the fir
 
 ---
 
-### `text or collection` **Response.get** (fieldName)
+### get()
+
+**Response.get** (fieldName) -> text or collection
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -229,7 +247,9 @@ If specified header is not found, it returns empty string or empty collection.
 
 ---
 
-### `Response` **Response.json** (content)
+### json()
+
+**Response.json** (content) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -244,7 +264,9 @@ The Content-Type header is set to "application/json" with `Response.type("json")
 
 ---
 
-### `Response` **Response.links** (object)
+### links()
+
+**Response.links** (object) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -272,13 +294,15 @@ $res_o.links({
 })
 ```
 
-will populate follow header:
+will populate following header:
 
 `Link: <https://example.com/page/1>; rel="prev", <https://example.com/page/3>; rel="next"`
 
 ---
 
-### `Response` **Response.location** (path)
+### location()
+
+**Response.location** (path) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -293,7 +317,9 @@ When the `path` parameter is "back", the value of `Location` header will be take
 
 ---
 
-### `Response` **Response.redirect** (status; path)
+### redirect()
+
+**Response.redirect** (status; path) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -307,7 +333,9 @@ If `status` code is omitted, it defaults to 302 ("Found").
 
 ---
 
-### `Response` **Response.render** (path; locals; callback)
+### render()
+
+**Response.render** (path; locals; callback) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -336,7 +364,9 @@ If an error had run out, the function receives an error collection whose structu
 
 ---
 
-### `Response` **Response.send** (body)
+### send()
+
+**Response.send** (body) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -360,7 +390,9 @@ When `body` is `Object` or `Collection`, the response will be converted to text 
 
 ---
 
-### `Response` **Response.sendFile** (path; options; callback)
+### sendFile()
+
+**Response.sendFile** (path; options; callback) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -398,7 +430,9 @@ After this function is executed with or without error, post process handler func
 
 ---
 
-### `Response` **Response.sendStatus** (status)
+### sendStatus()
+
+**Response.sendStatus** (status) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -409,7 +443,9 @@ This function sets response HTTP status code to `status` and send its text repre
 
 ---
 
-### `Response` **Response.set** (headerName; headerValue)
+### set()
+
+**Response.set** (headerName; headerValue) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -417,7 +453,7 @@ This function sets response HTTP status code to `status` and send its text repre
 |headerValue|text|&#x2192;|Response header field value||
 |return|object|&#x2190;|Response object||
 
-### `Response` **Response.set** (header)
+**Response.set** (header) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -443,7 +479,9 @@ In the second form, give object type data whose structure is `headerName:headerV
 
 ---
 
-### `Response` **Response.status** (status)
+### status()
+
+**Response.status** (status) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -456,7 +494,9 @@ It just set HTTP status in the HTTP response header and does not send response. 
 
 ---
 
-### `Response` **Response.type** (type)
+### type()
+
+**Response.type** (type) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -471,7 +511,9 @@ If the `type` contains "/" character, it is considered as mime type and used it 
 
 ---
 
-### `Response` **Response.vary** (value)
+### vary()
+
+**Response.vary** (value) -> Response
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
