@@ -1,5 +1,5 @@
-![Github](https://img.shields.io/badge/4D-v19-blue?style=flat-square)
-[![GitHub](https://img.shields.io/github/license/KoichiHaradaEndor/HTTPServer?style=flat-square)](LICENSE)
+![4Dv18R3 and above](https://img.shields.io/badge/4D-v18R3-blue?style=flat-square)
+[![MIT license](https://img.shields.io/github/license/KoichiHaradaEndor/HTTPServer?style=flat-square)](LICENSE)
 
 # HTTPServer
 
