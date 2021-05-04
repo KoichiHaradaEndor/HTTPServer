@@ -53,6 +53,7 @@ HTTPServer component is released under MIT license.
 
 ## Release Note
 
+- Documents are moved from wiki to Github Pages  (2021-05-04)
 - Added Request.baseUrl attribute support  (2021-05-02)
 - Fixed bug : Request.params does not return params when multiple route matches the path  (2021-05-02)  
 - Fixed bug : Response.cookie, httpOnly was not default, path param was not root when option is omitted  (2021-04-02)
