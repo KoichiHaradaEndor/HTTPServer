@@ -74,7 +74,9 @@ $app_o.stop()
 
 ---
 
-### `object` **HttpServer.restart** ()
+### app.restart()
+
+**HttpServer.restart** () -> object
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -95,15 +97,17 @@ $result_o:=$app_o.restart()
 
 ---
 
-### Option
+### Options
 
-### `void` **HttpServer.setOption** (options)
+### app.setOption()
+
+**HttpServer.setOption** (options)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |options|object|&#x2192;|Web Server options||
 
-### `void` **HttpServer.setOption** (key; value)
+**HttpServer.setOption** (key; value)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -139,13 +143,15 @@ $app_o.setOption("HTTPPort";8080)
 
 ---
 
-### `object` **HttpServer.getOption** ()
+### app.getOption()
+
+**HttpServer.getOption** () -> object
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
 |return|object|&#x2190;|Web Server options||
 
-### `variant` **HttpServer.getOption** (key)
+**HttpServer.getOption** (key) -> variant
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -177,7 +183,9 @@ $httpPort_l:=$app_o.getOption("HTTPPort")
 
 ---
 
-### `void` **HttpServer.setDynamicFolder** (dynamicFolder)
+### app.setDynamicFolder()
+
+**HttpServer.setDynamicFolder** (dynamicFolder)
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -205,7 +213,9 @@ $app_o.setOption("dynamicFolder";$folder_o)
 
 ---
 
-### `object` **HttpServer.getDynamicFolder** ()
+### app.getDynamicFolder()
+
+**HttpServer.getDynamicFolder** () -> object
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
@@ -230,7 +240,9 @@ $folder_o:=$app_o.getDynamicFolder()
 
 This class inherit routing function from `Route` class. Please also refer to the reference for details.
 
-### `SingleRoute` **HttpServer.route** (path)
+### app.route()
+
+**HttpServer.route** (path) -> SingleRoute
 
 |Name|Type||Description||
 |-----|-----|-----|-----|-----|
