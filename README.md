@@ -29,6 +29,8 @@ Please refer to the [doc](https://koichiharadaendor.github.io/HTTPServer/).
 - Shared Methods
     - [import HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/import%20HttpServer.html)
     - [OnWebConnection](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/OnWebConnection.html)
+    - [decodeURIComponent](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/decodeURIComponent.html)
+    - [encodeURIComponent](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/encodeURIComponent.html)
 - Classes
     - [HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/HttpServer-Class.html)
     - [Request](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Request-Class.html)
