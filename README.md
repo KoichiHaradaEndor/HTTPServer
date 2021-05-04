@@ -63,3 +63,7 @@ HTTPServer component is released under MIT license.
 - Rewritten using 4D v18R3 using Class function (2020-05-06)
 - Added new Router (2020-04-26)
 - Moved HttpServer.vhost to new Virtualhost (2020-04-23)
+
+<div style="display:none">
+### [HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/HttpServer.html)
+</div>
