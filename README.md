@@ -46,7 +46,7 @@ Small sample demo is in the "test" folder. Just launch it with 4D v18 Standalone
 
 ## License
 
-Please refer to [LICENSE](https://koichiharadaendor.github.io/HTTPServer/LICENSE.html) file.
+HTTPServer component is released under MIT license.
 
 ## Release Note
 
