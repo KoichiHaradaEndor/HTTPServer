@@ -24,9 +24,19 @@ Please refer to the [doc](https://koichiharadaendor.github.io/HTTPServer/).
 
 ### Contents
 
-- [About HTTPServer component](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Home.html)
-- [import HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/import%20HttpServer.html)
-- [OnWebConnection](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/OnWebConnection.html)
+- General
+    - [About HTTPServer component](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Home.html)
+- Shared Methods
+    - [import HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/import%20HttpServer.html)
+    - [OnWebConnection](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/OnWebConnection.html)
+- Classes
+    - [HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/HttpServer-Class.html)
+    - [Request](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Request-Class.html)
+    - [Response](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Response-Class.html)
+    - [Route](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Route-Class.html)
+    - [Router](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Router-Class.html)
+    - [SingleRoute](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/SingleRoute-Class.html)
+    - [VirtualHost](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/VirtualHost-Class.html)
 
 ## Example
 
