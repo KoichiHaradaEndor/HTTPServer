@@ -29,7 +29,7 @@ $app_o:=$cs_o.HttpServer.new(Web Server)
 
 ### Starts or stops HTTP server
 
-### app.start()
+### HttpServer.start()
 
 **HttpServer.start** () -> object
 
@@ -54,7 +54,7 @@ $result_o:=$app_o.start()
 
 ---
 
-### app.stop()
+### HttpServer.stop()
 
 **HttpServer.stop** () -> text
 
@@ -74,7 +74,7 @@ $app_o.stop()
 
 ---
 
-### app.restart()
+### HttpServer.restart()
 
 **HttpServer.restart** () -> object
 
@@ -99,7 +99,7 @@ $result_o:=$app_o.restart()
 
 ### Options
 
-### app.setOption()
+### HttpServer.setOption()
 
 **HttpServer.setOption** (options)
 
@@ -143,7 +143,7 @@ $app_o.setOption("HTTPPort";8080)
 
 ---
 
-### app.getOption()
+### HttpServer.getOption()
 
 **HttpServer.getOption** () -> object
 
@@ -183,7 +183,7 @@ $httpPort_l:=$app_o.getOption("HTTPPort")
 
 ---
 
-### app.setDynamicFolder()
+### HttpServer.setDynamicFolder()
 
 **HttpServer.setDynamicFolder** (dynamicFolder)
 
@@ -213,7 +213,7 @@ $app_o.setOption("dynamicFolder";$folder_o)
 
 ---
 
-### app.getDynamicFolder()
+### HttpServer.getDynamicFolder()
 
 **HttpServer.getDynamicFolder** () -> object
 
@@ -240,7 +240,7 @@ $folder_o:=$app_o.getDynamicFolder()
 
 This class inherit routing function from `Route` class. Please also refer to the reference for details.
 
-### app.route()
+### HttpServer.route()
 
 **HttpServer.route** (path) -> SingleRoute
 
