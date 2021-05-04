@@ -32,13 +32,13 @@ Please refer to the [doc](https://koichiharadaendor.github.io/HTTPServer/).
     - [decodeURIComponent](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/decodeURIComponent.html)
     - [encodeURIComponent](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Methods/encodeURIComponent.html)
 - Classes
-    - [HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/HttpServer-Class.html)
-    - [Request](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Request-Class.html)
-    - [Response](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Response-Class.html)
-    - [Route](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Route-Class.html)
-    - [Router](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Router-Class.html)
-    - [SingleRoute](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/SingleRoute-Class.html)
-    - [VirtualHost](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/VirtualHost-Class.html)
+    - [HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/HttpServer.html)
+    - [Request](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Request.html)
+    - [Response](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Response.html)
+    - [Route](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Route.html)
+    - [Router](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Router.html)
+    - [SingleRoute](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/SingleRoute.html)
+    - [VirtualHost](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/VirtualHost.html)
 
 ## Example
 

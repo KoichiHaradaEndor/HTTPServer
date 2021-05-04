@@ -1,6 +1,6 @@
 ﻿<!--import HttpServer -> cs
 This method returns the class store object of the component.-->
-### import HttpServer
+### import HttpServer()
 
 **import HttpServer** () -> cs
 

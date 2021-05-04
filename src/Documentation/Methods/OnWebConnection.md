@@ -1,6 +1,6 @@
 ﻿<!--OnWebConnection(object; text; text)
 This method returns the class store object of the component.-->
-### OnWebConnection
+### OnWebConnection()
 
 **OnWebConnection** (webServer; remoteIP; hostIP)
 
