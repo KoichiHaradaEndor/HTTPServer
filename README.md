@@ -65,5 +65,5 @@ HTTPServer component is released under MIT license.
 - Moved HttpServer.vhost to new Virtualhost (2020-04-23)
 
 <div style="display:none">
-### [HttpServer](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/HttpServer.html)
+<h3><a href="https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/HttpServer.html">HttpServer</a></h3>
 </div>
