@@ -28,7 +28,7 @@ C_OBJECT:C1216($1; $webServer_o)
 C_TEXT:C284($2; $ipClient_t)
 C_TEXT:C284($3; $ipServer_t)
 
-C_OBJECT:C1216($request_o; $response_o; $host_o; $route_o; $process_o; $webServer_o; $params_o)
+C_OBJECT:C1216($request_o; $response_o; $host_o; $route_o; $process_o; $webServer_o; $params_o; $formula_o)
 C_COLLECTION:C1488($hosts_c; $routes_c)
 C_TEXT:C284($requestHost_t; $requestMethod_t; $requestPath_t; $webServerName_t)
 C_TEXT:C284($routeMethod_t; $routePath_t; $name_t; $baseUrl_t)
@@ -125,11 +125,13 @@ For each ($route_o; $routes_c)
 	
 End for each 
 
-// Then call first callback
-If ($process_o.formulas.length>0)
+// Then execute callbacks
+For each ($formula_o; $process_o.formulas) Until ($process_o.callNext=False:C215)
 	
-	$request_o.params:=$process_o.formulas[$process_o.index].params
-	$request_o.baseUrl:=$process_o.formulas[$process_o.index].baseUrl
-	$process_o.formulas[$process_o.index].callback.call($process_o; $request_o; $response_o; $process_o.next)
+	$process_o.callNext:=False:C215  // This flag will be set to true when next() is called
+	$request_o.params:=$formula_o.params
+	$request_o.baseUrl:=$formula_o.baseUrl
 	
-End if 
+	$formula_o.callback.call($process_o; $request_o; $response_o; $process_o.next)
+	
+End for each 

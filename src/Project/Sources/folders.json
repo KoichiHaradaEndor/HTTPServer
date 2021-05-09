@@ -1,6 +1,7 @@
 ﻿{
 	"Classes": {
 		"classes": [
+			"Authentication",
 			"HttpServer",
 			"Request",
 			"Response",

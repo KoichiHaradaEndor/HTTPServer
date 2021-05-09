@@ -10,4 +10,12 @@ This method returns the class store object of the component.-->
 
 This method returns the class store (`cs`) object of the component.
 
+#### Example
+
+```4d
+C_OBJECT($cs_o)
+$cs_o:=import HttpServer
+// Then you can use claseses of HttpServer 
+```
+
 ---

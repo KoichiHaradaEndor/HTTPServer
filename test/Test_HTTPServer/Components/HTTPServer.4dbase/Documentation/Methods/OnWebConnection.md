@@ -18,4 +18,12 @@ Pass Web Server object returned by 4D's `Web Server` command to the first parame
 
 Then pass `$3` (remoteIP) and `$4` (hostIP) parameter of the On Web Connection database method to the second and the third parameter.
 
+#### Example
+
+```4d
+// On Web Connection database method
+C_TEXT($1; $2; $3; $4; $5; $6)
+OnWebConnection(Web Server; $3; $4)
+```
+
 ---

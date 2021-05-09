@@ -5,7 +5,7 @@ THIS CLASS WILL BE INSTANTIATED INTERNALLY.
 
 This is basic `Route` class.
 It contains common routing functions.
-Any other routing class inherit this class.
+Any other routing classes inherit this class.
 
 #### Extends
 
@@ -15,7 +15,7 @@ None
 
 Do not instantiate this class but use `HttpServer`, `VirtualHost` or `Router` classes and/or route object created with `route` function of those classes.
 
-This document is intended to describe methods that will be inherited to those instances.
+This document is intended to describe methods that inherites this class.
 
 ## Methods
 
