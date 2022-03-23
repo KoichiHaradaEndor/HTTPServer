@@ -742,6 +742,7 @@ Function redirect
 * This method is used to tell user agent to redirect
 * to the specified path with the specified status code.
 * If status code is omitted, it defaults to 302 ("Found").
+* This function does not encode the path parameter.
 *
 * @param {Longint} $1 Status code (optional)
 * @param {Text} $1 or $2 Redirect destination path
@@ -779,7 +780,7 @@ Function redirect
 	$formula_o:=Formula:C1597(RS_setHeaders)
 	$formula_o.call(This:C1470)
 	
-	WEB SEND HTTP REDIRECT:C659($path_t)
+	WEB SEND HTTP REDIRECT:C659($path_t; *)
 	
 	$0:=This:C1470
 	
