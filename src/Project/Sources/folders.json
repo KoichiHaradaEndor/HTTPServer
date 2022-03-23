@@ -1,14 +1,16 @@
 ﻿{
-	"Classes": {
+	"Autnetication": {
 		"classes": [
 			"Authentication",
-			"HttpServer",
-			"Request",
-			"Response",
-			"Route",
-			"Router",
-			"SingleRoute",
-			"VirtualHost"
+			"AuthenticationLocal"
+		]
+	},
+	"Classes": {
+		"groups": [
+			"Autnetication",
+			"HTTP Process",
+			"Routing",
+			"Session"
 		]
 	},
 	"DatabaseMethod": {
@@ -28,6 +30,13 @@
 			"error_handler",
 			"error_throw",
 			"error_try"
+		]
+	},
+	"HTTP Process": {
+		"classes": [
+			"HttpServer",
+			"Request",
+			"Response"
 		]
 	},
 	"HttpServer": {
@@ -63,6 +72,24 @@
 			"HS_addRouteFunction",
 			"HS_addRouteRouter",
 			"HS_addRouteVhost"
+		]
+	},
+	"Routing": {
+		"classes": [
+			"Route",
+			"Router",
+			"SingleRoute",
+			"VirtualHost"
+		]
+	},
+	"Session": {
+		"classes": [
+			"Session"
+		]
+	},
+	"Session Utility": {
+		"methods": [
+			"SS_MemoryStore"
 		]
 	},
 	"Utility": {

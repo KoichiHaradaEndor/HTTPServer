@@ -27,14 +27,16 @@
 *     "path": {Text} The path for which the callback function is invoked
 *     "baseUrl": {Text} The path for which the middleware is mounted
 *     "callbacks": {Collection} Collection of callback functions
+*     "position": {Text} Position that indicates where this route should be located in the route list. At the last when "last" is specified.
 * }
 * @author: HARADA Koichi
 */
 
 C_OBJECT:C1216($1; $param_o)
 
-C_TEXT:C284($hostname_t; $method_t; $path_t; $pattern_t; $param_t; $pathParam_t; $serverName_t; $baseUrl_t)
+C_TEXT:C284($hostname_t; $method_t; $path_t; $pattern_t; $param_t; $pathParam_t; $serverName_t; $baseUrl_t; $position_t)
 C_COLLECTION:C1488($callbacks_c; $pathParams_c)
+C_COLLECTION:C1488($normalRoutes_c; $lastRoutes_c; $toAppend_c)
 C_OBJECT:C1216($host_o; $callback_o; $routeItem_o)
 C_LONGINT:C283($start_l; $index_l; $insertionPosition_l)
 C_BOOLEAN:C305($matched_b)
@@ -59,6 +61,7 @@ If ($param_o.path#Null:C1517)
 	
 End if 
 
+$callbacks_c:=New collection:C1472
 If ($param_o.callbacks#Null:C1517)
 	
 	$callbacks_c:=$param_o.callbacks
@@ -68,6 +71,12 @@ End if
 If ($param_o.baseUrl#Null:C1517)
 	
 	$baseUrl_t:=$param_o.baseUrl
+	
+End if 
+
+If ($param_o.position#Null:C1517)
+	
+	$position_t:=$param_o.position
 	
 End if 
 
@@ -201,6 +210,19 @@ If (OB Instance of:C1731(This:C1470; cs:C1710.HttpServer))
 			
 			Use ($host_o.routes)
 				
+				$normalRoutes_c:=$host_o.routes.query("position = :1"; "")
+				$lastRoutes_c:=$host_o.routes.query("position = :1"; "last")
+				
+				If ($position_t="last")
+					
+					$toAppend_c:=$lastRoutes_c
+					
+				Else 
+					
+					$toAppend_c:=$normalRoutes_c
+					
+				End if 
+				
 				// Note:
 				// Here I append shared object first, then assign values.
 				// This way, formula object can be appended.
@@ -211,12 +233,13 @@ If (OB Instance of:C1731(This:C1470; cs:C1710.HttpServer))
 				
 				For each ($callback_o; $callbacks_c)
 					
-					$host_o.routes.push(New shared object:C1526())
-					$routeItem_o:=$host_o.routes[$host_o.routes.length-1]
+					$toAppend_c.push(New shared object:C1526())
+					$routeItem_o:=$toAppend_c[$toAppend_c.length-1]
 					$routeItem_o["method"]:=$method_t
 					$routeItem_o["path"]:=$path_t
 					$routeItem_o["callback"]:=$callback_o
 					$routeItem_o["baseUrl"]:=$baseUrl_t
+					$routeItem_o["position"]:=$position_t
 					
 					If ($pathParams_c#Null:C1517)
 						
@@ -230,6 +253,16 @@ If (OB Instance of:C1731(This:C1470; cs:C1710.HttpServer))
 					End if   // If ($pathParams_c#Null)
 					
 				End for each 
+				
+				If ($position_t="last")
+					
+					$host_o.routes:=$normalRoutes_c.combine($toAppend_c)
+					
+				Else 
+					
+					$host_o.routes:=$toAppend_c.combine($lastRoutes_c)
+					
+				End if 
 				
 			End use   // Use ($host_o.routes)
 			
@@ -250,14 +283,28 @@ Else
 		
 	End if 
 	
+	$normalRoutes_c:=$host_o.routes.query("position = :1"; "")
+	$lastRoutes_c:=$host_o.routes.query("position = :1"; "last")
+	
+	If ($position_t="last")
+		
+		$toAppend_c:=$lastRoutes_c
+		
+	Else 
+		
+		$toAppend_c:=$normalRoutes_c
+		
+	End if 
+	
 	For each ($callback_o; $callbacks_c)
 		
-		$host_o.routes.push(New object:C1471())
-		$routeItem_o:=$host_o.routes[$host_o.routes.length-1]
+		$toAppend_c.push(New object:C1471())
+		$routeItem_o:=$toAppend_c[$toAppend_c.length-1]
 		$routeItem_o["method"]:=$method_t
 		$routeItem_o["path"]:=$path_t
 		$routeItem_o["callback"]:=$callback_o
 		$routeItem_o["baseUrl"]:=$baseUrl_t
+		$routeItem_o["position"]:=$position_t
 		
 		// removed on 2021/05/02 by Koichi
 		// 'cause $pathParams_c is always null
@@ -266,5 +313,15 @@ Else
 		//End if 
 		
 	End for each 
+	
+	If ($position_t="last")
+		
+		$host_o.routes:=$normalRoutes_c.combine($toAppend_c)
+		
+	Else 
+		
+		$host_o.routes:=$toAppend_c.combine($lastRoutes_c)
+		
+	End if 
 	
 End if 
