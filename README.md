@@ -53,6 +53,7 @@ HTTPServer component is released under MIT license.
 
 ## Release Note
 
+- Request.redirect will not encode path parameter any more  (2022-03-24)
 - Documents are moved from wiki to Github Pages  (2021-05-04)
 - Added Request.baseUrl attribute support  (2021-05-02)
 - Fixed bug : Request.params does not return params when multiple route matches the path  (2021-05-02)  
