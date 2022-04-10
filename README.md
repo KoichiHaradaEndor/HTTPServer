@@ -42,8 +42,8 @@ Please refer to the [doc](https://koichiharadaendor.github.io/HTTPServer/).
     - [Router](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/Router.html)
     - [SingleRoute](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/SingleRoute.html)
     - [VirtualHost](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Classes/VirtualHost.html)
-- Others
-    - [Guide to secure web application built with 4D](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Guide-To-Secure-Web-App.html)
+- Other reads
+    - [Guide to secure web application built with 4D](https://koichiharadaendor.github.io/HTTPServer/src/Documentation/Guide-To-Secure-Web-App/index.html)
 ## Example
 
 Small sample demo is in the "test" folder. Just launch it with 4D v18 Standalone and connect to it with your favorite web browser via http://localhost/.
