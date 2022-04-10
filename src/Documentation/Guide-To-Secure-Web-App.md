@@ -10,8 +10,8 @@ Only ORDA is taken into account in this read.
 
 #### Provision
 
-- Use `exact match` comparison operator and placeholder when building query sentense.
-- Use `Verify password hash` to verify password.
+- Use `exact match` comparison operator and `placeholder` when building query sentense.
+- Use `Verify password hash` command to verify password.
 
 #### Discussion
 
@@ -51,9 +51,9 @@ Note:
 - using exact match comparison operator `===` or `IS` to invalidate wild card character "@"
 - using `Verify password hash`
   - to enforce password check
-  - to not store plain password text (this is to avoid leaking passwords)
+  - to not store plain password textin the database (this is to avoid leaking passwords)
 
 
 ## References
 
-- <cite><a src="https://www.ipa.go.jp/security/vuln/websecurity.html">How to Secure Your Web Site</a></cite> by IPA
+- [How to Secure Your Web Site](https://www.ipa.go.jp/security/vuln/websecurity.html) by IPA
