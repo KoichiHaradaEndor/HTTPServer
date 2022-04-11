@@ -10,7 +10,7 @@ I have not tried this scenario and do not confirm if it's realizable. However it
 1. The attacker provides trap page that contains image tag whose src value is `http://target-site/beacon.gif`.
 1. When a victim opens the trap page, an HTTP request for the beacon.gif is made to `http://target-site` but it will be handled by the fake web server.
 1. The fake web server makes a request to the real target site and fetch session ID, then respond to the victim's request with the fetched session ID.
-1. Finally the session ID for the target site that the attacker provides is set to the victime's web client.
+1. Finally the session ID for the target site that went through the attacker is set to the victime's web client.
 1. Then the victim makes the request to the target site over `HTTPS`, the web client will send the session ID that is set by the attacker.
 1. The victim login to the target site. Since the attacker knows the session ID, attacker also can browse the site under the victim's access privilege.
 
@@ -23,12 +23,12 @@ I have not tried this scenario and do not confirm if it's realizable. However it
 
 This issue occurs because the bad session ID is tied to the authenticated user session. To prevent this, generate another session ID after login is established and use it for tracking user authentication.
 
-Of course the newly generated session ID must be sent to the user's web client under SSL/TLS connection, and also set the secure flag to prevent from peeking.
+Of course the newly generated session ID must be sent to the user's web client under SSL/TLS connection, and also set the secure flag to prevent from sniffing.
 
 ```4D
 // after a user is autheticated
 $sessionId_t:=Generate UUID
-WEB SET HTTP HEADER("Set-Cookie: CookeiName="+$sessionId_t+"; Secure; HttpOnly; SaveSite=Lax")
+WEB SET HTTP HEADER("Set-Cookie: CookeiName="+$sessionId_t+"; Secure; HttpOnly; SameSite=Lax")
 
 $auth_o:=New object
 $auth_o.sessionId:=$sessionId_t
@@ -41,7 +41,7 @@ End use
 when the next request comes, extract the cookie value whose name is CookeiName, then compare it with the value of `Session.storage.auth.sessionId` using exact match.
 
 ```4D
-$authenticated_b:=Compare strings(Session.storage.auth.sessionId; $cookieValue_t; sk char codes)
+$authenticated_b:=(Compare strings(Session.storage.auth.sessionId; $cookieValue_t; sk char codes)=0)
 ```
 
 - [Return to index](index.html)
