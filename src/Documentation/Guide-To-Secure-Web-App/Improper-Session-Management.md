@@ -44,4 +44,8 @@ when the next request comes, extract the cookie value whose name is CookeiName, 
 $authenticated_b:=(Compare strings(Session.storage.auth.sessionId; $cookieValue_t; sk char codes)=0)
 ```
 
+## References
+
+- [Cookie Manipulation Is Possible Even On SSL](https://blog.tokumaru.org/2013/09/cookie-manipulation-is-possible-even-on-ssl.html) by TOKUMARU Hiroshi
+
 - [Return to index](index.html)
