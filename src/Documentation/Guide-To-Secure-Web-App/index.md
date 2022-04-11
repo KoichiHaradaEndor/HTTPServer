@@ -10,6 +10,7 @@ Only ORDA is taken into account in this read.
 ### [Query Injection](Query-Injection.html)
 ### [Directory Traversal](Directory-Traversal.html)
 ### [Improper Session Management](Improper-Session-Management.html)
+### [Cross Site Scripting](Cross-Site-Scripting.html)
 
 ## Vulnerabilities not discussed in this article
 
