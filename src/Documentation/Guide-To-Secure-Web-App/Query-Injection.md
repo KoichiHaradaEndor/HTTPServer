@@ -1,4 +1,4 @@
-# SQL Injection
+# Query Injection
 
 ## Provision
 
@@ -7,11 +7,9 @@
 
 ## Discussion
 
-I consider this attack as "query cheating" under 4D.
-
-For example, when the querying a user code is like follow,
+For example, when the querying a user code (for login) is like follow,
 ```4D
-$userSelection_o:=ds.User.query("loginname = '"+$loginname_t+"' & password = "+$password_t)
+$userSelection_o:=ds.User.query("loginname = '"+$loginname_t+"' & password = '"+$password_t+"'")
 $authenticated_b:=(userSelection_o.length=1)
 ```
 
@@ -20,7 +18,7 @@ attacker can give `victimName' | loginname = '` for login name and empty string 
 Then the query sentence becomes:
 
 ```4D
-$userSelection_o:=ds.User.query("loginname = 'victimName' | loginname = '' & password = ")
+$userSelection_o:=ds.User.query("loginname = 'victimName' | loginname = '' & password = ''")
 ```
 
 The result is, a user whose login name is "victimName" will be loaded even though the password is not given.

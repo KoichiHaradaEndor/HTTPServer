@@ -2,7 +2,7 @@
 
 ## Provision
 
-- Avoid directly specifying the file name to open, specified by the user input.
+- Avoid directly specifying the file name to open, by using user input.
 - Reject file name which contains `/`, `\` and `:`.
 
 ## Discussion
