@@ -33,12 +33,20 @@ WEB SEND TEXT($html_t)
 
 then the attacker can provide a link that calls this code:
 
-https://targetSite/command?userInput=&#37;3Cscript&#37;3Edocument.querySelector(%27body%27).textContent=%27XSS%27%3C/script%3E
+https://targetSite/command?userInput=&#37;3Cscript&#37;3Edocument.querySelector(&#37;27body&#37;27).textContent=&#37;27XSS&#37;27&#37;3C/script&#37;3E
 
 When a victim click on this link, the web server receives a request whose query string is "userInput=&lt;script&gt;document.querySelector('body').textContent='XSS'&lt;/script&gt;"
 
 Since `4DEVAL` (as well as `4DHTML`) tag inserts the given data without escaping HTML special characters, the script block is inserted as is and will be executed on the victim's web client.
 
-This is also true when using `4DSCRIPT` tag. When the user input data start with `Char(01)`, it works the same with `4DHTML` and `4DEVAL`. In this case the link should be https://targetSite/command?userInput=&#37;01%3Cscript%3Edocument.querySelector(%27body%27).textContent=%27XSS%27%3C/script%3E
+This is also true when using `4DSCRIPT` tag. When the user input data start with `Char(1)`, it works the same with `4DHTML` and `4DEVAL`.
+
+https://targetSite/command?userInput=&#37;01&#37;3Cscript&#37;3Edocument.querySelector(&#37;27body&#37;27).textContent=&#37;27XSS&#37;27&#37;3C/script&#37;3E
+
+Note the `&#37;01` just after "userInput=". By doing this, 4D tranlates the userInput data and treats it as starting with `Char(1)`.
+
+So I recommend not to use `4DEVAL`, `4DHTML`, and `4DSCRIPT` tag to insert user input text into response HTML, but use `4DTEXT` only.
+
+To execute 4D code when parsing HTML, you can use `4DCODE` tag.
 
 - [Return to index](index.html)
