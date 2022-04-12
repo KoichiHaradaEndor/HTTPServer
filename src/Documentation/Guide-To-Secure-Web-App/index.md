@@ -12,10 +12,14 @@ Only ORDA is taken into account in this read.
 ### [Improper Session Management](Improper-Session-Management.html)
 ### [Cross Site Scripting](Cross-Site-Scripting.html)
 ### [Cross Site Request Forgery](Cross-Site-Request-Forgery.html)
+### [HTTP Header Injection](HTTP-Header-Injection.html)
 
 ## Vulnerabilities not discussed in this article
 
 - OS Command Injection
+- Mail Header Injection
+- Click Jacking
+- Buffer Overflow
 
 ## References
 
