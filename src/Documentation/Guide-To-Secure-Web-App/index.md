@@ -23,4 +23,5 @@ Only ORDA is taken into account in this read.
 
 ## References
 
-- [How to Secure Your Web Site](https://www.ipa.go.jp/security/vuln/websecurity.html) by IPA
+- [How to Secure Your Web Site (JA)](https://www.ipa.go.jp/security/vuln/websecurity.html) by IPA
+- [How to Secure Your Web Site (EN)](https://www.ipa.go.jp/files/000017318.pdf) by IPA
