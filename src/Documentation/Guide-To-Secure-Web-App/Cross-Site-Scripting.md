@@ -49,7 +49,7 @@ This is also true when using `4DSCRIPT` tag. When the user input data start with
 // removes the first '/'
 $varName_t:=Substring($varName_t; 2)
 
-// provide data to insert
+// find the value corresponding to the given name
 ARRAY TEXT($names_at; 0)
 ARRAY TEXT($values_at; 0)
 WEB GET VARIABLES($names_at; $values_at)
@@ -64,6 +64,8 @@ End if
 <p>InputData</p>
 <p><!--#4DSCRIPT/getRequestVariableText/userInput--></p>
 ```
+
+The trap link is:
 
 https://targetSite/command?userInput=&#37;01&#37;3Cscript&#37;3Edocument.querySelector(&#37;27body&#37;27).textContent=&#37;27XSS&#37;27&#37;3C/script&#37;3E
 

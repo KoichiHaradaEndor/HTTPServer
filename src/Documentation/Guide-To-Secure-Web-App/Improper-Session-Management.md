@@ -28,7 +28,7 @@ Of course the newly generated session ID must be sent to the user's web client u
 ```4D
 // after a user is autheticated
 $sessionId_t:=Generate UUID
-WEB SET HTTP HEADER("Set-Cookie: CookeiName="+$sessionId_t+"; Secure; HttpOnly; SameSite=Lax")
+WEB SET HTTP HEADER("Set-Cookie: CookieName="+$sessionId_t+"; Secure; HttpOnly; SameSite=Lax")
 
 $auth_o:=New object
 $auth_o.sessionId:=$sessionId_t
@@ -38,7 +38,7 @@ Use(Session.storage.auth) // assumes Session.storage.auth shared object exists
 End use
 ```
 
-when the next request comes, extract the cookie value whose name is CookeiName, then compare it with the value of `Session.storage.auth.sessionId` using exact match.
+when the next request comes, extract the cookie value whose name is CookieName, then compare it with the value of `Session.storage.auth.sessionId` using exact match.
 
 ```4D
 $authenticated_b:=(Compare strings(Session.storage.auth.sessionId; $cookieValue_t; sk char codes)=0)

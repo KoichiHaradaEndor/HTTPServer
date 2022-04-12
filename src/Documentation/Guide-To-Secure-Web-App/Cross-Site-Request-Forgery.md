@@ -55,12 +55,13 @@ To avoid this attack, generate an unpredictable token and use it to track user t
 </form>
 ```
 
-The 4D code that serves this page look like:
+The 4D code that serves this page looks like:
 
 ```4D
 Case of
   :($httpMethod_t="GET")
     // It is important to check if this is called via GET method
+    // since the token should be generated when this page is requested via GET method
     // You can extract HTTP method via WEB GET HTTP HEADER command
 
     $token_t:=Generate UUID
@@ -78,9 +79,9 @@ Case of
 End case
 ```
 
-Note that the token is regitered to the appropriate user session. Even though the attacker requested this page and got the token too, it is regitered to the attacker's session. So even attacker provides trap page with the token, it will not match with the one registered for the user session.
+Note that the token is registered to the appropriate user session. Even though the attacker requested this page and got the token too, it is registered to the attacker's session. So even attacker provides trap page with the token value, it will not match with the one registered for the user session.
 
-4D code for handling "/addBB" request will be
+4D code for handling "/addBB" request would be
 
 ```4D
 // $url_t is "/addBB"
