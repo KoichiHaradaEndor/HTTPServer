@@ -21,9 +21,9 @@ I have not tried this scenario and do not confirm if it's realizable. However it
 
 ## Discussion
 
-This issue occurs because the unsafe session ID is tied to the authenticated user session. To prevent this, generate another session ID after login is established and use it for tracking user authentication.
+This issue occurs because the unsafe session ID is tied to the authenticated user session. To prevent this, generate another session ID after login is established and use it for evaluating user authentication. Since the attacker does not know the newly generated session ID, the attack will not take effect.
 
-Of course the newly generated session ID must be sent to the user's web client under SSL/TLS connection, and also set the secure flag to prevent from sniffing.
+Of course the newly generated session ID must be sent to the user's web client under SSL/TLS connection, and also set the `secure` flag to prevent from sniffing.
 
 ```4D
 // after a user is autheticated
@@ -48,4 +48,4 @@ $authenticated_b:=(Compare strings(Session.storage.auth.sessionId; $cookieValue_
 
 - [Cookie Manipulation Is Possible Even On SSL](https://blog.tokumaru.org/2013/09/cookie-manipulation-is-possible-even-on-ssl.html) by TOKUMARU Hiroshi
 
-- [Return to index](index.html)
+[Return to index](index.html)

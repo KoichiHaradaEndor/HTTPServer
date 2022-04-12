@@ -43,4 +43,4 @@ Note:
   - to take out password check clause from querying a user sentence
   - to not store plain password text in the database (this is to avoid leaking passwords)
 
-- [Return to index](index.html)
+[Return to index](index.html)

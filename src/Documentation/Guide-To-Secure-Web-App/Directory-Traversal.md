@@ -26,4 +26,4 @@ To avoid this, first consider not to allow file name input.
 
 Or check if the `$filename_t` contains path special characters like `/`, `\` or `:`. If so, consider it as an attack and stop processing the request.
 
-- [Return to index](index.html)
+[Return to index](index.html)

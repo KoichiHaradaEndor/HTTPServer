@@ -2,7 +2,7 @@
 
 ## Provision
 
-- Avoid using `4DEVAL`, `4DHTML`, and `4DSCRIPT` tag but use `4DTEXT` tag to insert data into HTML content. 
+- Avoid using `4DEVAL`, `4DHTML`, and `4DSCRIPT` tags but use `4DTEXT` tag to insert data into HTML content. 
 
 ## Discussion
 
@@ -71,6 +71,6 @@ Note the `%01` just after "userInput=". By doing this, 4D tranlates the userInpu
 
 So I recommend not to use `4DEVAL`, `4DHTML`, and `4DSCRIPT` tag to insert user input text into response HTML, but use `4DTEXT` only. (Note that "user input text" includes data come from database.)
 
-To execute 4D code when parsing HTML, you can use `4DCODE` tag.
+To execute 4D code while parsing HTML, you can use `4DCODE` tag.
 
-- [Return to index](index.html)
+[Return to index](index.html)
