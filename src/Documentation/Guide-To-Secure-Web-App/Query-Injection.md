@@ -26,7 +26,7 @@ The result is, a user whose login name is "victimName" will be loaded even thoug
 To avoid this vulnerablity, the code should look like:
 
 ```4D
-$userSelection_o:=ds.User.query("loginname === :1; $loginname_t)
+$userSelection_o:=ds.User.query("loginname === :1"; $loginname_t)
 Case of
   :($userSelection_o#Null)
   :($userSelection_o.length=0)
