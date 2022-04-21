@@ -43,7 +43,7 @@ Then an attacker provides trap page that contains following HTML code:
 </body>
 ```
 
-When a victime opens this trap page, the post request will be made to the target site, along with victim's valid session cookie value. If the victim has logged in to the site, the malicious post will be saved under victim's privilege.
+When a victim opens this trap page, the post request will be made to the target site, along with victim's valid session cookie value. If the victim has logged in to the site, the malicious post will be saved under victim's privilege.
 
 To avoid this attack, generate an unpredictable token and use it to track user transition.
 
@@ -65,7 +65,7 @@ Case of
     // You can extract HTTP method via WEB GET HTTP HEADER command
 
     $token_t:=Generate UUID
-    $var_o:=New object("token"; $token_t; "action"; "adding bulletin baord")
+    $var_o:=New object("token"; $token_t; "action"; "adding bulletin board")
     PROCESS 4D TAGS($htmlTemPlate_t; $html_t; $var_o)
     WEB SEND TEXT($html_t)
 
