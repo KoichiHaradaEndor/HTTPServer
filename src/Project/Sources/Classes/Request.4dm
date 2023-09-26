@@ -17,11 +17,11 @@ Class constructor
 * @return {Object} $0 Request object
 */
 	
-	C_TEXT:C284($1;$ipClient_t)
-	C_TEXT:C284($2;$ipServer_t)
+	C_TEXT:C284($1; $ipClient_t)
+	C_TEXT:C284($2; $ipServer_t)
 	
-	C_COLLECTION:C1488($headers_c;$queryResult_c;$cookies_c;$aCookie_c;$splitResult_c)
-	C_TEXT:C284($contentType_t;$body_t;$cookie_t;$pattern_t)
+	C_COLLECTION:C1488($headers_c; $queryResult_c; $cookies_c; $aCookie_c; $splitResult_c)
+	C_TEXT:C284($contentType_t; $body_t; $cookie_t; $pattern_t; $uri_t; $queryString_t)
 	C_BOOLEAN:C305($matched_b)
 	
 	$ipClient_t:=$1
@@ -30,30 +30,30 @@ Class constructor
 	This:C1470.__ipClient__:=$ipClient_t
 	This:C1470.__ipServer__:=$ipServer_t
 	
-	  //#####
-	  // Properties
-	  //#####
+	//#####
+	// Properties
+	//#####
 	
-	  // Retrieves request header information
-	  // Stores header collection into request object for later use
+	// Retrieves request header information
+	// Stores header collection into request object for later use
 	This:C1470.__headers__:=New collection:C1472()
-	ARRAY TEXT:C222($headerNames_at;0)
-	ARRAY TEXT:C222($headerValues_at;0)
-	WEB GET HTTP HEADER:C697($headerNames_at;$headerValues_at)
-	ARRAY TO COLLECTION:C1563(This:C1470.__headers__;$headerNames_at;"name";$headerValues_at;"value")
+	ARRAY TEXT:C222($headerNames_at; 0)
+	ARRAY TEXT:C222($headerValues_at; 0)
+	WEB GET HTTP HEADER:C697($headerNames_at; $headerValues_at)
+	ARRAY TO COLLECTION:C1563(This:C1470.__headers__; $headerNames_at; "name"; $headerValues_at; "value")
 	$headers_c:=This:C1470.__headers__
 	
-	  //#####
-	  // Request.body
-	  //#####
-	$queryResult_c:=$headers_c.query("name = :1";"Content-Type")
+	//#####
+	// Request.body
+	//#####
+	$queryResult_c:=$headers_c.query("name = :1"; "Content-Type")
 	If ($queryResult_c.length>0)
 		
 		$contentType_t:=$queryResult_c[0].value
 		Case of 
 			: ($contentType_t="application/x-www-form-urlencoded")
 				
-				This:C1470.body:=RQ_parseWebVariables 
+				This:C1470.body:=RQ_parseWebVariables
 				
 			: ($contentType_t="application/json")
 				
@@ -68,10 +68,10 @@ Class constructor
 						
 					: ($body_t[[1]]="[")  // Array structure
 						
-						ARRAY OBJECT:C1221($objects_ao;0)
-						JSON PARSE ARRAY:C1219($body_t;$objects_ao)
+						ARRAY OBJECT:C1221($objects_ao; 0)
+						JSON PARSE ARRAY:C1219($body_t; $objects_ao)
 						This:C1470.body:=New collection:C1472()
-						ARRAY TO COLLECTION:C1563(This:C1470.body;$objects_ao)
+						ARRAY TO COLLECTION:C1563(This:C1470.body; $objects_ao)
 						
 				End case 
 				
@@ -79,23 +79,23 @@ Class constructor
 		
 	End if 
 	
-	  //#####
-	  // Request.cookies
-	  //#####
+	//#####
+	// Request.cookies
+	//#####
 	This:C1470.cookies:=New object:C1471()
-	$queryResult_c:=$headers_c.query("name = :1";"Cookie")
+	$queryResult_c:=$headers_c.query("name = :1"; "Cookie")
 	If ($queryResult_c.length>0)
 		
-		$cookies_c:=Split string:C1554($queryResult_c[0].value;";";sk ignore empty strings:K86:1+sk trim spaces:K86:2)
-		For each ($cookie_t;$cookies_c)
+		$cookies_c:=Split string:C1554($queryResult_c[0].value; ";"; sk ignore empty strings:K86:1+sk trim spaces:K86:2)
+		For each ($cookie_t; $cookies_c)
 			
-			$aCookie_c:=Split string:C1554($cookie_t;"=";sk trim spaces:K86:2)
+			$aCookie_c:=Split string:C1554($cookie_t; "="; sk trim spaces:K86:2)
 			Case of 
 				: ($aCookie_c.length=1)
 					This:C1470.cookies[$aCookie_c[0]]:=""
 					
 				: ($aCookie_c.length=2)
-					This:C1470.cookies[$aCookie_c[0]]:=decodeURIComponent ($aCookie_c[1])
+					This:C1470.cookies[$aCookie_c[0]]:=decodeURIComponent($aCookie_c[1])
 					
 			End case 
 			
@@ -103,86 +103,102 @@ Class constructor
 		
 	End if 
 	
-	  //#####
-	  // Request.hostname
-	  //#####
+	//#####
+	// Request.hostname
+	//#####
 	This:C1470.hostname:=""
-	$queryResult_c:=$headers_c.query("name = :1";"Host")
+	$queryResult_c:=$headers_c.query("name = :1"; "Host")
 	If ($queryResult_c.length>0)
 		
-		  // removes port number part
-		$splitResult_c:=Split string:C1554($queryResult_c[0].value;":";sk ignore empty strings:K86:1+sk trim spaces:K86:2)
+		// removes port number part
+		$splitResult_c:=Split string:C1554($queryResult_c[0].value; ":"; sk ignore empty strings:K86:1+sk trim spaces:K86:2)
 		This:C1470.hostname:=$splitResult_c[0]
 		
 	End if 
 	
-	  //#####
-	  // Request.ip
-	  //#####
+	//#####
+	// Request.ip
+	//#####
 	This:C1470.ip:=$ipClient_t
 	
-	  //#####
-	  // Request.method
-	  //#####
+	//#####
+	// Request.method
+	//#####
 	This:C1470.method:=""
-	$queryResult_c:=$headers_c.query("name = :1";"X-METHOD")
+	$queryResult_c:=$headers_c.query("name = :1"; "X-METHOD")
 	If ($queryResult_c.length>0)
 		
 		This:C1470.method:=$queryResult_c[0].value
 		
 	End if 
 	
-	  //#####
-	  // Request.path
-	  //#####
+	//#####
+	// Request.path
+	//#####
 	This:C1470.path:=""
-	$queryResult_c:=$headers_c.query("name = :1";"X-URL")
+	$queryResult_c:=$headers_c.query("name = :1"; "X-URL")
 	If ($queryResult_c.length>0)
 		
 		$pattern_t:="^(.*?)(?:\\?.*)?(?:#.*)?$"
-		ARRAY LONGINT:C221($positions_al;0)
-		ARRAY LONGINT:C221($lengths_al;0)
-		$matched_b:=Match regex:C1019($pattern_t;$queryResult_c[0].value;1;$positions_al;$lengths_al)
+		ARRAY LONGINT:C221($positions_al; 0)
+		ARRAY LONGINT:C221($lengths_al; 0)
+		$matched_b:=Match regex:C1019($pattern_t; $queryResult_c[0].value; 1; $positions_al; $lengths_al)
 		If ($matched_b)
 			
-			This:C1470.path:=Substring:C12($queryResult_c[0].value;$positions_al{1};$lengths_al{1})
+			This:C1470.path:=Substring:C12($queryResult_c[0].value; $positions_al{1}; $lengths_al{1})
 			
 		End if 
 		
 	End if 
 	
-	  //#####
-	  // Request.protocol
-	  //#####
-	This:C1470.protocol:=Choose:C955(WEB Is secured connection:C698;"https";"http")
+	//#####
+	// Request.protocol
+	//#####
+	This:C1470.protocol:=Choose:C955(WEB Is secured connection:C698; "https"; "http")
 	
-	  //#####
-	  // Request.query
-	  //#####
+	//#####
+	// Request.query
+	//#####
 	This:C1470.query:=New object:C1471()
-	$queryResult_c:=$headers_c.query("name = :1";"X-URL")
+	$queryResult_c:=$headers_c.query("name = :1"; "X-URL")
 	If ($queryResult_c.length>0)
 		
-		$pattern_t:="^(?:.*?)(?:\\?.*)+(?:#.*)?$"  // to find query string part
-		$matched_b:=Match regex:C1019($pattern_t;$queryResult_c[0].value;1)
+		$uri_t:=$queryResult_c[0].value
+		
+		// Removes fragment part (just in case)
+		$position_l:=Position:C15("#"; $uri_t; *)
+		If ($position_l>0)
+			$uri_t:=Substring:C12($uri_t; 1; $position_l-1)
+		End if 
+		
+		$pattern_t:="^(?:.*?)(\\?.+?)(?:#.*)?$"  // to find query string part
+		ARRAY LONGINT:C221($position_al; 0)
+		ARRAY LONGINT:C221($length_al; 0)
+		
+		$matched_b:=Match regex:C1019($pattern_t; $uri_t; 1; $position_al; $length_al)
 		If ($matched_b)
 			
-			This:C1470.query:=RQ_parseWebVariables 
+			If (This:C1470.method="GET")
+				This:C1470.query:=RQ_parseWebVariables()
+			Else   // When the HTTP method is PUT or POST for instance
+				$queryString_t:=Substring:C12($uri_t; $position_al{1}; $length_al{1})
+				This:C1470.query:=RQ_parseWebVariablesManual($queryString_t)
+			End if 
 			
 		End if 
 		
 	End if 
 	
-	  //#####
-	  // Request.secure
-	  //#####
+	//#####
+	// Request.secure
+	//#####
 	This:C1470.secure:=WEB Is secured connection:C698
 	
-	  //#####
-	  // Request.xhr
-	  //#####
+	//#####
+	// Request.xhr
+	//#####
 	This:C1470.xhr:=False:C215
-	$queryResult_c:=$headers_c.query("name = :1";"X-Requested-With")
+	$queryResult_c:=$headers_c.query("name = :1"; "X-Requested-With")
 	If ($queryResult_c.length>0)
 		
 		This:C1470.xhr:=($queryResult_c[0].value="XMLHttpRequest")
@@ -205,11 +221,11 @@ Function accepts
 */
 	
 	C_VARIANT:C1683($1)
-	C_TEXT:C284($0;$matchedMimeType_t)
+	C_TEXT:C284($0; $matchedMimeType_t)
 	
 	C_LONGINT:C283($type_l)
-	C_COLLECTION:C1488($candidates_c;$queryResult_c;$items_c;$parts_c;$acceptList_c)
-	C_TEXT:C284($accept_t;$item_t;$pattern_t)
+	C_COLLECTION:C1488($candidates_c; $queryResult_c; $items_c; $parts_c; $acceptList_c)
+	C_TEXT:C284($accept_t; $item_t; $pattern_t)
 	C_REAL:C285($priority_r)
 	C_OBJECT:C1216($item_o)
 	
@@ -228,47 +244,47 @@ Function accepts
 			
 	End case 
 	
-	  // construct Accept header collection
-	$queryResult_c:=This:C1470.__headers__.query("name = :1";"Accept")
+	// construct Accept header collection
+	$queryResult_c:=This:C1470.__headers__.query("name = :1"; "Accept")
 	If ($queryResult_c.length>0)
 		
-		  // $accept_t: something like text/*;q=.5, application/json
+		// $accept_t: something like text/*;q=.5, application/json
 		$accept_t:=$queryResult_c[0].value
 		
-		  // $items_c: ["text/*;q=.5"; "application/json"]
-		$items_c:=Split string:C1554($accept_t;",";sk ignore empty strings:K86:1+sk trim spaces:K86:2)
+		// $items_c: ["text/*;q=.5"; "application/json"]
+		$items_c:=Split string:C1554($accept_t; ","; sk ignore empty strings:K86:1+sk trim spaces:K86:2)
 		
 		$acceptList_c:=New collection:C1472()
-		For each ($item_t;$items_c)
+		For each ($item_t; $items_c)
 			
-			  // $item_t: "text/*;q=.5"
-			  // $parts_c: ["text/*"; "q=.5"] or [application/json]
-			$parts_c:=Split string:C1554($item_t;";";sk ignore empty strings:K86:1+sk trim spaces:K86:2)
+			// $item_t: "text/*;q=.5"
+			// $parts_c: ["text/*"; "q=.5"] or [application/json]
+			$parts_c:=Split string:C1554($item_t; ";"; sk ignore empty strings:K86:1+sk trim spaces:K86:2)
 			Case of 
 				: ($parts_c.length=1)
 					
 					$priority_r:=1
-					$pattern_t:=Replace string:C233($parts_c[0];"*";"@")
-					$acceptList_c.push(New object:C1471("mimetype";$parts_c[0];"priority";$priority_r;"pattern";$pattern_t))
+					$pattern_t:=Replace string:C233($parts_c[0]; "*"; "@")
+					$acceptList_c.push(New object:C1471("mimetype"; $parts_c[0]; "priority"; $priority_r; "pattern"; $pattern_t))
 					
 				: ($parts_c.length=2)
 					
 					$priority_r:=Num:C11($parts_c[1])
-					$pattern_t:=Replace string:C233($parts_c[0];"*";"@")
-					$acceptList_c.push(New object:C1471("mimetype";$parts_c[0];"priority";$priority_r;"pattern";$pattern_t))
+					$pattern_t:=Replace string:C233($parts_c[0]; "*"; "@")
+					$acceptList_c.push(New object:C1471("mimetype"; $parts_c[0]; "priority"; $priority_r; "pattern"; $pattern_t))
 					
 			End case 
 			
 		End for each 
 		
-		  // sort by priority, when priority is the same value, more precise item has priority
+		// sort by priority, when priority is the same value, more precise item has priority
 		$acceptList_c.sort("RQ_sortAccept")
 		
-		  // then execute query
-		For each ($item_o;$acceptList_c) Until ($matchedMimeType_t#"")
+		// then execute query
+		For each ($item_o; $acceptList_c) Until ($matchedMimeType_t#"")
 			
 			$pattern_t:=$item_o.pattern
-			$matchedMimeType_t:=$candidates_c.find("RQ_findAccept";$pattern_t)
+			$matchedMimeType_t:=$candidates_c.find("RQ_findAccept"; $pattern_t)
 			
 		End for each 
 		
@@ -286,15 +302,15 @@ Function get
 * @return {Text} $0 Request header field value
 */
 	
-	C_TEXT:C284($1;$name_t)
-	C_TEXT:C284($0;$value_t)
+	C_TEXT:C284($1; $name_t)
+	C_TEXT:C284($0; $value_t)
 	
 	C_COLLECTION:C1488($queryResult_c)
 	
 	$name_t:=$1
 	$value_t:=""
 	
-	$queryResult_c:=This:C1470.__headers__.query("name = :1";$name_t)
+	$queryResult_c:=This:C1470.__headers__.query("name = :1"; $name_t)
 	If ($queryResult_c.length>0)
 		
 		$value_t:=$queryResult_c[0].value
