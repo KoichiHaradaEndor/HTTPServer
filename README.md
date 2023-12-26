@@ -54,6 +54,7 @@ HTTPServer component is released under MIT license.
 
 ## Release Note
 
+- JSON body was not parsed since the content-type may be application/json; charset=utf-8, not application/json. now it's fixed  (2023-12-26)
 - Request.redirect will not encode path parameter any more  (2022-03-24)
 - Documents are moved from wiki to Github Pages  (2021-05-04)
 - Added Request.baseUrl attribute support  (2021-05-02)
