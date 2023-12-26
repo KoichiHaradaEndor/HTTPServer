@@ -47,9 +47,11 @@ Class constructor
 	// Request.body
 	//#####
 	$queryResult_c:=$headers_c.query("name = :1"; "Content-Type")
+	SET TEXT TO PASTEBOARD:C523(JSON Stringify:C1217($queryResult_c))
 	If ($queryResult_c.length>0)
 		
 		$contentType_t:=$queryResult_c[0].value
+		SET TEXT TO PASTEBOARD:C523($contentType_t)
 		Case of 
 			: ($contentType_t="application/x-www-form-urlencoded")
 				
